@@ -1,18 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { COLORS } from '../constants/theme';
+import { COLORS, RADIUS, SHADOW } from '../constants/theme';
 
 import HomeScreen from '../screens/HomeScreen';
 import InventoryScreen from '../screens/InventoryScreen';
 import InsightsScreen from '../screens/InsightsScreen';
 import ResearchScreen from '../screens/ResearchScreen';
-
-// Utility screens (accessible from tab or deep-link)
 import HydrationScreen from '../screens/HydrationScreen';
 import NutritionScreen from '../screens/NutritionScreen';
 import DoseLogScreen from '../screens/DoseLogScreen';
@@ -23,21 +21,6 @@ import CalculatorScreen from '../screens/CalculatorScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
-function MoreStack() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="MoreHome" component={MoreHomeScreen} />
-      <Stack.Screen name="Hydration" component={HydrationScreen} />
-      <Stack.Screen name="Nutrition" component={NutritionScreen} />
-      <Stack.Screen name="DoseLog" component={DoseLogScreen} />
-      <Stack.Screen name="Weight" component={WeightScreen} />
-      <Stack.Screen name="CheckIn" component={CheckInScreen} />
-      <Stack.Screen name="SideEffects" component={SideEffectsScreen} />
-      <Stack.Screen name="Calculator" component={CalculatorScreen} />
-    </Stack.Navigator>
-  );
-}
 
 function HomeStack() {
   return (
@@ -50,55 +33,59 @@ function HomeStack() {
       <Stack.Screen name="CheckIn" component={CheckInScreen} />
       <Stack.Screen name="SideEffects" component={SideEffectsScreen} />
       <Stack.Screen name="Calculator" component={CalculatorScreen} />
+      <Stack.Screen name="Inventory" component={InventoryScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 }
 
-// Simple more screen with grid of tools
-import { Text, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
-import { SPACING, RADIUS } from '../constants/theme';
+function TrackStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="TrackHome" component={TrackScreen} />
+      <Stack.Screen name="Hydration" component={HydrationScreen} />
+      <Stack.Screen name="Nutrition" component={NutritionScreen} />
+      <Stack.Screen name="DoseLog" component={DoseLogScreen} />
+      <Stack.Screen name="Weight" component={WeightScreen} />
+      <Stack.Screen name="CheckIn" component={CheckInScreen} />
+      <Stack.Screen name="SideEffects" component={SideEffectsScreen} />
+      <Stack.Screen name="Calculator" component={CalculatorScreen} />
+    </Stack.Navigator>
+  );
+}
 
-function MoreHomeScreen({ navigation }: any) {
+function TrackScreen({ navigation }: any) {
   const tools = [
-    { label: 'Hydration', icon: 'water', screen: 'Hydration', color: COLORS.accentAlt },
-    { label: 'Nutrition', icon: 'restaurant', screen: 'Nutrition', color: COLORS.accentWarm },
-    { label: 'Dose Log', icon: 'medical', screen: 'DoseLog', color: COLORS.accent },
-    { label: 'Weight', icon: 'scale', screen: 'Weight', color: COLORS.accentBlue },
-    { label: 'Check-In', icon: 'heart', screen: 'CheckIn', color: COLORS.accentRed },
-    { label: 'Side Effects', icon: 'alert-circle', screen: 'SideEffects', color: COLORS.accentYellow },
-    { label: 'Calculator', icon: 'calculator', screen: 'Calculator', color: COLORS.accentGreen },
+    { label: 'Dose Log', icon: 'medical', screen: 'DoseLog', bg: COLORS.purpleLight, color: COLORS.purple },
+    { label: 'Hydration', icon: 'water', screen: 'Hydration', bg: COLORS.blueLight, color: COLORS.blue },
+    { label: 'Nutrition', icon: 'restaurant', screen: 'Nutrition', bg: COLORS.orangeLight, color: COLORS.orange },
+    { label: 'Weight', icon: 'scale', screen: 'Weight', bg: COLORS.blueLight, color: COLORS.blue },
+    { label: 'Check-In', icon: 'heart', screen: 'CheckIn', bg: COLORS.pinkLight, color: COLORS.coral },
+    { label: 'Side Effects', icon: 'alert-circle', screen: 'SideEffects', bg: COLORS.goldLight, color: COLORS.gold },
+    { label: 'Calculator', icon: 'calculator', screen: 'Calculator', bg: COLORS.greenLight, color: COLORS.green },
   ];
 
   return (
-    <View style={moreStyles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#0A0F0A']} style={StyleSheet.absoluteFill} />
-      <View style={moreStyles.header}>
-        <Text style={moreStyles.title}>Tools</Text>
+    <View style={trackStyles.container}>
+      <View style={trackStyles.header}>
+        <Text style={trackStyles.title}>Track</Text>
+        <Text style={trackStyles.subtitle}>Log your daily data</Text>
       </View>
-      <ScrollView contentContainerStyle={moreStyles.scroll}>
-        <View style={moreStyles.grid}>
-          {tools.map(tool => (
-            <TouchableOpacity
-              key={tool.label}
-              style={moreStyles.toolCard}
-              onPress={() => navigation.navigate(tool.screen)}
-              activeOpacity={0.75}
-            >
-              <LinearGradient
-                colors={[tool.color + '22', tool.color + '08'] as [string, string]}
-                style={moreStyles.toolCardInner}
-              >
-                <View style={[moreStyles.iconCircle, { backgroundColor: tool.color + '22', borderColor: tool.color + '44' }]}>
-                  <Ionicons name={tool.icon as any} size={26} color={tool.color} />
-                </View>
-                <Text style={moreStyles.toolLabel}>{tool.label}</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
+      <View style={trackStyles.grid}>
+        {tools.map(tool => (
+          <TouchableOpacity
+            key={tool.label}
+            style={[trackStyles.card, SHADOW.sm]}
+            onPress={() => navigation.navigate(tool.screen)}
+            activeOpacity={0.82}
+          >
+            <View style={[trackStyles.iconWrap, { backgroundColor: tool.bg }]}>
+              <Ionicons name={tool.icon as any} size={26} color={tool.color} />
+            </View>
+            <Text style={trackStyles.cardLabel}>{tool.label}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   );
 }
@@ -106,26 +93,48 @@ function MoreHomeScreen({ navigation }: any) {
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.bg, justifyContent: 'center', alignItems: 'center' }}>
-      <LinearGradient colors={['#0A0A0F', '#0F0A18']} style={StyleSheet.absoluteFill} />
       <Text style={{ color: COLORS.textPrimary, fontSize: 20, fontWeight: '700' }}>Settings</Text>
       <Text style={{ color: COLORS.textSecondary, marginTop: 8 }}>Coming soon</Text>
     </View>
   );
 }
 
-const moreStyles = StyleSheet.create({
+const trackStyles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
-  header: { paddingTop: 60, paddingHorizontal: SPACING.md, paddingBottom: SPACING.md },
-  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
-  scroll: { paddingHorizontal: SPACING.md },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
-  toolCard: { width: '47%', borderRadius: RADIUS.lg, overflow: 'hidden', borderWidth: 1, borderColor: COLORS.bgGlassBorder },
-  toolCardInner: { padding: 20, alignItems: 'flex-start', minHeight: 100 },
-  iconCircle: {
-    width: 48, height: 48, borderRadius: 16,
-    borderWidth: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 12,
+  header: { paddingTop: 58, paddingHorizontal: 16, paddingBottom: 16 },
+  title: { color: COLORS.textPrimary, fontSize: 30, fontWeight: '800', letterSpacing: -0.5 },
+  subtitle: { color: COLORS.textSecondary, fontSize: 14, marginTop: 2 },
+  grid: { paddingHorizontal: 16, flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  card: {
+    width: '47%', backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: 18, alignItems: 'flex-start',
   },
-  toolLabel: { color: COLORS.textPrimary, fontSize: 15, fontWeight: '700' },
+  iconWrap: { width: 48, height: 48, borderRadius: 14, justifyContent: 'center', alignItems: 'center', marginBottom: 12 },
+  cardLabel: { color: COLORS.textPrimary, fontSize: 14, fontWeight: '700' },
+});
+
+// Custom center FAB tab bar button
+function LogButton({ onPress }: { onPress: () => void }) {
+  return (
+    <TouchableOpacity onPress={onPress} activeOpacity={0.85} style={fabStyles.wrap}>
+      <LinearGradient
+        colors={['#7C5CFC', '#B09CFE']}
+        start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+        style={fabStyles.fab}
+      >
+        <Ionicons name="add" size={28} color="#fff" />
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+}
+
+const fabStyles = StyleSheet.create({
+  wrap: { top: -20, justifyContent: 'center', alignItems: 'center' },
+  fab: {
+    width: 58, height: 58, borderRadius: 29,
+    justifyContent: 'center', alignItems: 'center',
+    ...SHADOW.md,
+  },
 });
 
 export default function AppNavigator() {
@@ -135,38 +144,36 @@ export default function AppNavigator() {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarStyle: styles.tabBar,
-          tabBarActiveTintColor: COLORS.accent,
+          tabBarActiveTintColor: COLORS.purple,
           tabBarInactiveTintColor: COLORS.textTertiary,
-          tabBarShowLabel: true,
           tabBarLabelStyle: styles.tabLabel,
-          tabBarBackground: () => (
-            <LinearGradient
-              colors={['rgba(10,10,15,0.97)', 'rgba(10,10,15,1)']}
-              style={StyleSheet.absoluteFill}
-            />
-          ),
-          tabBarIcon: ({ color, size, focused }) => {
+          tabBarBackground: () => <View style={[StyleSheet.absoluteFill, styles.tabBarBg]} />,
+          tabBarIcon: ({ color, focused }) => {
             const icons: Record<string, [string, string]> = {
               Home: ['home', 'home-outline'],
               Inventory: ['flask', 'flask-outline'],
+              Track: ['add-circle', 'add-circle-outline'],
               Insights: ['stats-chart', 'stats-chart-outline'],
               Research: ['book', 'book-outline'],
-              Tools: ['grid', 'grid-outline'],
             };
             const [active, inactive] = icons[route.name] || ['ellipse', 'ellipse-outline'];
-            return (
-              <View style={[styles.tabIconWrap, focused && styles.tabIconWrapActive]}>
-                <Ionicons name={(focused ? active : inactive) as any} size={22} color={color} />
-              </View>
-            );
+            if (route.name === 'Track') return null; // replaced by FAB
+            return <Ionicons name={(focused ? active : inactive) as any} size={23} color={color} />;
           },
         })}
       >
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Inventory" component={InventoryScreen} />
+        <Tab.Screen
+          name="Track"
+          component={TrackStack}
+          options={{
+            tabBarLabel: '',
+            tabBarButton: (props) => <LogButton onPress={props.onPress as any} />,
+          }}
+        />
         <Tab.Screen name="Insights" component={InsightsScreen} />
         <Tab.Screen name="Research" component={ResearchScreen} />
-        <Tab.Screen name="Tools" component={MoreStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -174,24 +181,19 @@ export default function AppNavigator() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    borderTopWidth: 1,
-    borderTopColor: COLORS.bgGlassBorder,
+    borderTopWidth: 0,
     height: Platform.OS === 'ios' ? 85 : 65,
     paddingBottom: Platform.OS === 'ios' ? 24 : 8,
     paddingTop: 8,
     elevation: 0,
+
   },
-  tabLabel: {
-    fontSize: 10,
-    fontWeight: '600',
-    letterSpacing: 0.3,
-    marginTop: 2,
+  tabBarBg: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.border,
   },
-  tabIconWrap: {
-    width: 40, height: 32, borderRadius: 10,
-    justifyContent: 'center', alignItems: 'center',
-  },
-  tabIconWrapActive: {
-    backgroundColor: COLORS.accent + '18',
-  },
+  tabLabel: { fontSize: 10, fontWeight: '600', letterSpacing: 0.2 },
 });

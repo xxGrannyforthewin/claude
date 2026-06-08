@@ -1,43 +1,50 @@
 export const COLORS = {
-  // Core backgrounds - deep, rich darks with subtle hue
-  bg: '#0A0A0F',
-  bgCard: 'rgba(18, 18, 28, 0.85)',
-  bgGlass: 'rgba(255, 255, 255, 0.06)',
-  bgGlassHover: 'rgba(255, 255, 255, 0.10)',
-  bgGlassBorder: 'rgba(255, 255, 255, 0.12)',
+  // Backgrounds
+  bg: '#F5F5F7',
+  bgCard: '#FFFFFF',
+  bgCardSoft: '#FAFAFA',
 
-  // Accent palette - muted, pharmaceutical-cool
-  accent: '#C8B8FF',        // soft lavender
-  accentAlt: '#8EE3D4',     // mint teal
-  accentWarm: '#F2A97E',    // peach
-  accentRed: '#FF7B7B',     // soft coral
-  accentBlue: '#7EB8F2',    // cool blue
-  accentGreen: '#88DBA8',   // sage green
-  accentYellow: '#F2D97E',  // warm gold
+  // Primary purple
+  purple: '#7C5CFC',
+  purpleLight: '#EEE9FF',
+  purpleMid: '#A991FD',
+  purpleDark: '#5B3FD4',
 
-  // Gradients
-  gradientPrimary: ['#C8B8FF', '#8EE3D4'] as string[],
-  gradientWarm: ['#F2A97E', '#C8B8FF'] as string[],
-  gradientCool: ['#7EB8F2', '#8EE3D4'] as string[],
-  gradientFire: ['#FF7B7B', '#F2A97E'] as string[],
+  // Accent palette
+  roseGold: '#E8A598',
+  roseGoldLight: '#FDF0EE',
+  lavender: '#C4B5FD',
+  lavenderLight: '#F3F0FF',
+  pink: '#F9A8D4',
+  pinkLight: '#FDF2F8',
+
+  // Metric colors
+  orange: '#FB923C',
+  orangeLight: '#FFF7ED',
+  blue: '#60A5FA',
+  blueLight: '#EFF6FF',
+  green: '#34D399',
+  greenLight: '#ECFDF5',
+  coral: '#F87171',
+  coralLight: '#FEF2F2',
+  gold: '#FBBF24',
+  goldLight: '#FFFBEB',
 
   // Text
-  textPrimary: '#F5F5F5',
-  textSecondary: 'rgba(245, 245, 245, 0.55)',
-  textTertiary: 'rgba(245, 245, 245, 0.30)',
+  textPrimary: '#0D0D0D',
+  textSecondary: '#8E8E93',
+  textTertiary: '#C7C7CC',
+  textWhite: '#FFFFFF',
 
   // Borders
-  border: 'rgba(255, 255, 255, 0.08)',
-  borderAccent: 'rgba(200, 184, 255, 0.25)',
-};
+  border: '#F0F0F0',
+  borderMid: '#E5E5EA',
 
-export const FONTS = {
-  thin: 'System',
-  light: 'System',
-  regular: 'System',
-  medium: 'System',
-  semibold: 'System',
-  bold: 'System',
+  // Gradients
+  gradientPurple: ['#7C5CFC', '#A991FD'] as string[],
+  gradientRose: ['#E8A598', '#F9A8D4'] as string[],
+  gradientBlue: ['#60A5FA', '#93C5FD'] as string[],
+  gradientOrange: ['#FB923C', '#FCD34D'] as string[],
 };
 
 export const SPACING = {
@@ -50,9 +57,33 @@ export const SPACING = {
 };
 
 export const RADIUS = {
-  sm: 8,
-  md: 14,
-  lg: 20,
-  xl: 28,
+  sm: 10,
+  md: 16,
+  lg: 22,
+  xl: 30,
   pill: 999,
+};
+
+export const SHADOW = {
+  sm: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.055,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  md: {
+    shadowColor: '#7C5CFC',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 5,
+  },
+  soft: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
+    elevation: 1,
+  },
 };

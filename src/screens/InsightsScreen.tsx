@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import { COLORS, SPACING, RADIUS } from '../constants/theme';
-import GlassCard from '../components/GlassCard';
+import { COLORS, SPACING, RADIUS, SHADOW } from '../constants/theme';
 import ProgressRing from '../components/ProgressRing';
 import { Storage } from '../store/storage';
 import { WaterLog, NutritionLog, WeightLog, CheckIn, DoseLog, SideEffect } from '../types';
@@ -69,8 +68,7 @@ export default function InsightsScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#0A0F18']} style={StyleSheet.absoluteFill} />
+      <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
         <Text style={styles.title}>Insights</Text>
@@ -78,34 +76,34 @@ export default function InsightsScreen() {
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Overview rings */}
-        <GlassCard variant="accent" style={styles.overviewCard}>
+        <View style={[styles.overviewCard, SHADOW.sm]}>
           <Text style={styles.cardTitle}>WEEKLY OVERVIEW</Text>
           <View style={styles.ringsRow}>
             <View style={styles.ringItem}>
-              <ProgressRing size={72} strokeWidth={6} progress={weekWater / (2500 * 7)} color={COLORS.accentAlt} label={`${(weekWater / 1000).toFixed(0)}L`} sublabel="Hydration" />
+              <ProgressRing size={72} strokeWidth={6} progress={weekWater / (2500 * 7)} color={COLORS.blue} label={`${(weekWater / 1000).toFixed(0)}L`} sublabel="Hydration" />
             </View>
             <View style={styles.ringItem}>
-              <ProgressRing size={72} strokeWidth={6} progress={weekDoses / 14} color={COLORS.accent} label={`${weekDoses}`} sublabel="Doses" />
+              <ProgressRing size={72} strokeWidth={6} progress={weekDoses / 14} color={COLORS.purple} label={`${weekDoses}`} sublabel="Doses" />
             </View>
             <View style={styles.ringItem}>
-              <ProgressRing size={72} strokeWidth={6} progress={weeklyCalAvg / 2000} color={COLORS.accentWarm} label={`${weeklyCalAvg}`} sublabel="kcal/day" />
+              <ProgressRing size={72} strokeWidth={6} progress={weeklyCalAvg / 2000} color={COLORS.orange} label={`${weeklyCalAvg}`} sublabel="kcal/day" />
             </View>
           </View>
-        </GlassCard>
+        </View>
 
         {/* Wellbeing */}
         <Text style={styles.sectionLabel}>WELLBEING</Text>
         <View style={styles.wellbeingRow}>
           {[
-            { label: 'Avg Mood', value: avgMood, icon: 'happy', color: COLORS.accentYellow },
-            { label: 'Avg Energy', value: avgEnergy, icon: 'flash', color: COLORS.accentWarm },
-            { label: 'Check-ins', value: checkIns.length.toString(), icon: 'checkmark-circle', color: COLORS.accentGreen },
+            { label: 'Avg Mood', value: avgMood, icon: 'happy', color: COLORS.purple },
+            { label: 'Avg Energy', value: avgEnergy, icon: 'flash', color: COLORS.orange },
+            { label: 'Check-ins', value: checkIns.length.toString(), icon: 'checkmark-circle', color: COLORS.green },
           ].map(item => (
-            <GlassCard key={item.label} style={[styles.wellCard, { flex: 1 }] as any}>
+            <View key={item.label} style={[styles.wellCard, { flex: 1 }, SHADOW.sm]}>
               <Ionicons name={item.icon as any} size={20} color={item.color} />
               <Text style={[styles.wellValue, { color: item.color }]}>{item.value}</Text>
               <Text style={styles.wellLabel}>{item.label}</Text>
-            </GlassCard>
+            </View>
           ))}
         </View>
 
@@ -113,7 +111,7 @@ export default function InsightsScreen() {
         {weightLogs.length > 0 && (
           <>
             <Text style={styles.sectionLabel}>WEIGHT TREND</Text>
-            <GlassCard style={styles.weightCard}>
+            <View style={[styles.weightCard, SHADOW.sm]}>
               <View style={styles.weightRow}>
                 <View style={styles.weightStat}>
                   <Text style={styles.weightValue}>{weightLogs[weightLogs.length - 1].weight}</Text>
@@ -123,17 +121,17 @@ export default function InsightsScreen() {
                 <Ionicons
                   name={weightChange !== null && parseFloat(weightChange) < 0 ? 'trending-down' : 'trending-up'}
                   size={32}
-                  color={weightChange !== null && parseFloat(weightChange) < 0 ? COLORS.accentGreen : COLORS.accentRed}
+                  color={weightChange !== null && parseFloat(weightChange) < 0 ? COLORS.green : COLORS.coral}
                 />
                 <View style={styles.weightStat}>
-                  <Text style={[styles.weightValue, { color: weightChange !== null && parseFloat(weightChange) < 0 ? COLORS.accentGreen : COLORS.accentRed }]}>
+                  <Text style={[styles.weightValue, { color: weightChange !== null && parseFloat(weightChange) < 0 ? COLORS.green : COLORS.coral }]}>
                     {weightChange !== null ? `${parseFloat(weightChange) > 0 ? '+' : ''}${weightChange}` : '--'}
                   </Text>
                   <Text style={styles.weightUnit}>{weightLogs[0].unit}</Text>
                   <Text style={styles.weightLabel}>Total Change</Text>
                 </View>
               </View>
-            </GlassCard>
+            </View>
           </>
         )}
 
@@ -141,13 +139,13 @@ export default function InsightsScreen() {
         {topSymptoms.length > 0 && (
           <>
             <Text style={styles.sectionLabel}>SYMPTOM FREQUENCY</Text>
-            <GlassCard>
+            <View style={[styles.symptomCard, SHADOW.sm]}>
               {topSymptoms.map(([symptom, count], i) => (
                 <View key={symptom} style={[styles.symptomRow, i > 0 && styles.symptomBorder]}>
                   <Text style={styles.symptomName}>{symptom}</Text>
                   <View style={styles.symptomBarBg}>
                     <LinearGradient
-                      colors={[COLORS.accentRed, COLORS.accentRed + '44'] as [string, string]}
+                      colors={[COLORS.coral, COLORS.coral + '44'] as [string, string]}
                       start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                       style={[styles.symptomBar, { width: `${(count / topSymptoms[0][1]) * 100}%` as any }]}
                     />
@@ -155,7 +153,7 @@ export default function InsightsScreen() {
                   <Text style={styles.symptomCount}>{count}x</Text>
                 </View>
               ))}
-            </GlassCard>
+            </View>
           </>
         )}
 
@@ -170,25 +168,45 @@ const styles = StyleSheet.create({
   header: { paddingTop: 60, paddingHorizontal: SPACING.md, paddingBottom: SPACING.md },
   title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
   scroll: { paddingHorizontal: SPACING.md },
-  overviewCard: { marginBottom: 16 },
-  cardTitle: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.5, marginBottom: 12 },
+  overviewCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 16,
+  },
+  cardTitle: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 12,
+  },
   ringsRow: { flexDirection: 'row', justifyContent: 'space-around' },
   ringItem: {},
-  sectionLabel: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.5, marginBottom: 8, marginTop: 8 },
+  sectionLabel: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, textTransform: 'uppercase',
+    marginBottom: 8, marginTop: 8,
+  },
   wellbeingRow: { flexDirection: 'row', gap: 8, marginBottom: 8 },
-  wellCard: { alignItems: 'center', gap: 4 },
+  wellCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, alignItems: 'center', gap: 4,
+  },
   wellValue: { fontSize: 22, fontWeight: '700' },
   wellLabel: { color: COLORS.textSecondary, fontSize: 11 },
-  weightCard: { marginBottom: 8 },
+  weightCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 8,
+  },
   weightRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' },
   weightStat: { alignItems: 'center' },
   weightValue: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
   weightUnit: { color: COLORS.textSecondary, fontSize: 12 },
   weightLabel: { color: COLORS.textSecondary, fontSize: 11, marginTop: 2 },
+  symptomCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 8,
+  },
   symptomRow: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 8 },
   symptomBorder: { borderTopWidth: 1, borderTopColor: COLORS.border },
   symptomName: { color: COLORS.textPrimary, fontSize: 13, width: 100 },
-  symptomBarBg: { flex: 1, height: 4, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 2, overflow: 'hidden' },
+  symptomBarBg: { flex: 1, height: 4, backgroundColor: COLORS.border, borderRadius: 2, overflow: 'hidden' },
   symptomBar: { height: 4, borderRadius: 2 },
   symptomCount: { color: COLORS.textSecondary, fontSize: 12, width: 28, textAlign: 'right' },
 });

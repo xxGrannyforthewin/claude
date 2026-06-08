@@ -6,9 +6,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import Svg, { Polyline, Line, Text as SvgText } from 'react-native-svg';
-import { COLORS, SPACING, RADIUS } from '../constants/theme';
-import GlassCard from '../components/GlassCard';
+import Svg, { Polyline, Line } from 'react-native-svg';
+import { COLORS, SPACING, RADIUS, SHADOW } from '../constants/theme';
 import PillButton from '../components/PillButton';
 import { Storage } from '../store/storage';
 import { WeightLog, UserGoals } from '../types';
@@ -30,7 +29,6 @@ function AddWeightModal({ visible, onClose, onSave, unit }: {
     <Modal visible={visible} transparent animationType="slide">
       <View style={modalStyles.overlay}>
         <View style={modalStyles.sheet}>
-          <LinearGradient colors={['#0F0A1A', '#0A0A0F']} style={StyleSheet.absoluteFill} />
           <Text style={modalStyles.title}>Log Weight</Text>
           <Text style={modalStyles.label}>WEIGHT ({unit})</Text>
           <TextInput
@@ -52,7 +50,7 @@ function AddWeightModal({ visible, onClose, onSave, unit }: {
   );
 }
 
-export default function WeightScreen() {
+export default function WeightScreen({ navigation }: any) {
   const [logs, setLogs] = useState<WeightLog[]>([]);
   const [goals, setGoals] = useState<UserGoals | null>(null);
   const [showAdd, setShowAdd] = useState(false);
@@ -102,71 +100,77 @@ export default function WeightScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#0F0A0A']} style={StyleSheet.absoluteFill} />
+      <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+          <Ionicons name="chevron-back" size={20} color={COLORS.textPrimary} />
+        </TouchableOpacity>
         <Text style={styles.title}>Weight</Text>
         <TouchableOpacity style={styles.addBtn} onPress={() => setShowAdd(true)}>
-          <Ionicons name="add" size={24} color={COLORS.accentBlue} />
+          <Ionicons name="add" size={24} color={COLORS.purple} />
         </TouchableOpacity>
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Stats */}
         <View style={styles.statsRow}>
-          <GlassCard style={[styles.statCard, { flex: 1, marginRight: 8 }] as any}>
+          <View style={[styles.statCard, { flex: 1, marginRight: 8 }, SHADOW.sm]}>
             <Text style={styles.statValue}>{latest ? `${latest.weight}` : '--'}</Text>
             <Text style={styles.statLabel}>Current ({unit})</Text>
-          </GlassCard>
-          <GlassCard style={[styles.statCard, { flex: 1, marginHorizontal: 4 }] as any}>
-            <Text style={[styles.statValue, { color: change !== null ? (change < 0 ? COLORS.accentGreen : COLORS.accentRed) : COLORS.textPrimary }]}>
+          </View>
+          <View style={[styles.statCard, { flex: 1, marginHorizontal: 4 }, SHADOW.sm]}>
+            <Text style={[styles.statValue, {
+              color: change !== null
+                ? (change < 0 ? COLORS.green : COLORS.coral)
+                : COLORS.textPrimary,
+            }]}>
               {change !== null ? `${change > 0 ? '+' : ''}${change.toFixed(1)}` : '--'}
             </Text>
             <Text style={styles.statLabel}>Total Change</Text>
-          </GlassCard>
-          <GlassCard style={[styles.statCard, { flex: 1, marginLeft: 8 }] as any}>
+          </View>
+          <View style={[styles.statCard, { flex: 1, marginLeft: 8 }, SHADOW.sm]}>
             <Text style={styles.statValue}>{target || '--'}</Text>
             <Text style={styles.statLabel}>Goal ({unit})</Text>
-          </GlassCard>
+          </View>
         </View>
 
         {/* Chart */}
         {recentLogs.length > 1 && (
-          <GlassCard variant="accent" style={styles.chartCard}>
-            <Text style={styles.chartTitle}>TREND (last 30 days)</Text>
+          <View style={[styles.chartCard, SHADOW.sm]}>
+            <Text style={styles.chartTitle}>TREND (LAST 30 DAYS)</Text>
             <Svg width="100%" height={chartH + 20} viewBox={`0 0 ${chartW} ${chartH + 20}`}>
               <Line x1={20} y1={10} x2={20} y2={chartH} stroke={COLORS.border} strokeWidth={1} />
               <Line x1={20} y1={chartH} x2={chartW - 20} y2={chartH} stroke={COLORS.border} strokeWidth={1} />
               <Polyline
                 points={points}
                 fill="none"
-                stroke={COLORS.accentBlue}
+                stroke={COLORS.blue}
                 strokeWidth={2}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </Svg>
-          </GlassCard>
+          </View>
         )}
 
         {/* Log list */}
         <Text style={styles.sectionLabel}>HISTORY</Text>
         {[...logs].reverse().slice(0, 20).map(log => (
-          <GlassCard key={log.id} style={styles.logRow}>
-            <Ionicons name="scale" size={16} color={COLORS.accentBlue} />
+          <View key={log.id} style={[styles.logRow, SHADOW.sm]}>
+            <Ionicons name="scale" size={16} color={COLORS.blue} />
             <Text style={styles.logWeight}>{log.weight} {log.unit}</Text>
             {log.notes ? <Text style={styles.logNotes}>{log.notes}</Text> : null}
             <Text style={styles.logDate}>
               {new Date(log.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric' })}
             </Text>
-          </GlassCard>
+          </View>
         ))}
 
         {logs.length === 0 && (
-          <GlassCard style={styles.emptyCard}>
+          <View style={[styles.emptyCard, SHADOW.sm]}>
             <Text style={styles.emptyText}>No weight logs yet</Text>
-          </GlassCard>
+          </View>
         )}
 
         <View style={{ height: 32 }} />
@@ -180,43 +184,72 @@ export default function WeightScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
   header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    flexDirection: 'row', alignItems: 'center',
     paddingTop: 60, paddingHorizontal: SPACING.md, paddingBottom: SPACING.md,
+    gap: 12,
   },
-  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
+  backBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center',
+    ...SHADOW.sm,
+  },
+  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800', flex: 1 },
   addBtn: {
     width: 40, height: 40, borderRadius: 20,
-    backgroundColor: COLORS.bgGlass, borderWidth: 1,
-    borderColor: COLORS.bgGlassBorder, justifyContent: 'center', alignItems: 'center',
+    backgroundColor: COLORS.purpleLight,
+    justifyContent: 'center', alignItems: 'center',
   },
   scroll: { paddingHorizontal: SPACING.md },
   statsRow: { flexDirection: 'row', marginBottom: 12 },
-  statCard: { alignItems: 'center', gap: 4 },
+  statCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, alignItems: 'center', gap: 4,
+  },
   statValue: { color: COLORS.textPrimary, fontSize: 22, fontWeight: '700' },
   statLabel: { color: COLORS.textSecondary, fontSize: 11 },
-  chartCard: { marginBottom: 16 },
-  chartTitle: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.2, marginBottom: 8 },
-  sectionLabel: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.5, marginBottom: 8, marginTop: 8 },
-  logRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8, paddingVertical: 10 },
+  chartCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 16,
+  },
+  chartTitle: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, marginBottom: 8, textTransform: 'uppercase',
+  },
+  sectionLabel: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, textTransform: 'uppercase',
+    marginBottom: 8, marginTop: 8,
+  },
+  logRow: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, flexDirection: 'row', alignItems: 'center',
+    gap: 10, marginBottom: 8,
+  },
   logWeight: { color: COLORS.textPrimary, fontSize: 16, fontWeight: '600', flex: 1 },
   logNotes: { color: COLORS.textSecondary, fontSize: 12, flex: 2 },
   logDate: { color: COLORS.textTertiary, fontSize: 12 },
-  emptyCard: { alignItems: 'center' },
+  emptyCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, alignItems: 'center',
+  },
   emptyText: { color: COLORS.textSecondary, fontSize: 14 },
 });
 
 const modalStyles = StyleSheet.create({
-  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'flex-end' },
+  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },
   sheet: {
+    backgroundColor: '#fff',
     borderTopLeftRadius: RADIUS.xl, borderTopRightRadius: RADIUS.xl,
-    padding: SPACING.lg, paddingBottom: 40, overflow: 'hidden',
-    borderWidth: 1, borderBottomWidth: 0, borderColor: COLORS.bgGlassBorder,
+    padding: SPACING.lg, paddingBottom: 40,
   },
   title: { color: COLORS.textPrimary, fontSize: 20, fontWeight: '700', marginBottom: 12 },
-  label: { color: COLORS.textSecondary, fontSize: 11, letterSpacing: 1.2, fontWeight: '600', marginBottom: 6, marginTop: 12 },
+  label: {
+    color: COLORS.textSecondary, fontSize: 10, letterSpacing: 1.2,
+    fontWeight: '700', textTransform: 'uppercase', marginBottom: 6, marginTop: 10,
+  },
   input: {
-    backgroundColor: COLORS.bgGlass, borderRadius: RADIUS.md,
-    borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bg, borderRadius: RADIUS.md,
+    borderWidth: 1, borderColor: COLORS.borderMid,
     color: COLORS.textPrimary, padding: 12, fontSize: 15,
   },
   btnRow: { flexDirection: 'row', marginTop: 20 },

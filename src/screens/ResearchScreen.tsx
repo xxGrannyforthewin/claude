@@ -3,10 +3,8 @@ import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
   TextInput, StatusBar, Modal,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS, SPACING, RADIUS } from '../constants/theme';
-import GlassCard from '../components/GlassCard';
+import { COLORS, SPACING, RADIUS, SHADOW } from '../constants/theme';
 
 const COMPOUNDS = [
   {
@@ -89,14 +87,13 @@ function CompoundModal({ compound, onClose }: { compound: typeof COMPOUNDS[0] | 
     <Modal visible animationType="slide" transparent>
       <View style={modalStyles.overlay}>
         <View style={modalStyles.sheet}>
-          <LinearGradient colors={['#0F0A1A', '#0A0A0F']} style={StyleSheet.absoluteFill} />
           <View style={modalStyles.sheetHeader}>
-            <View>
+            <View style={{ flex: 1 }}>
               <Text style={modalStyles.compoundName}>{compound.name}</Text>
               <Text style={modalStyles.compoundAlias}>{compound.aliases.join(' · ')}</Text>
             </View>
-            <TouchableOpacity onPress={onClose}>
-              <Ionicons name="close-circle" size={28} color={COLORS.textSecondary} />
+            <TouchableOpacity onPress={onClose} style={modalStyles.closeBtn}>
+              <Ionicons name="close" size={20} color={COLORS.textPrimary} />
             </TouchableOpacity>
           </View>
 
@@ -110,11 +107,11 @@ function CompoundModal({ compound, onClose }: { compound: typeof COMPOUNDS[0] | 
             </View>
 
             <View style={modalStyles.pharmaRow}>
-              <View style={modalStyles.pharmaStat}>
+              <View style={[modalStyles.pharmaStat, SHADOW.soft]}>
                 <Text style={modalStyles.pharmaLabel}>HALF-LIFE</Text>
                 <Text style={modalStyles.pharmaValue}>{compound.halfLife}</Text>
               </View>
-              <View style={modalStyles.pharmaStat}>
+              <View style={[modalStyles.pharmaStat, SHADOW.soft]}>
                 <Text style={modalStyles.pharmaLabel}>PEAK TIME</Text>
                 <Text style={modalStyles.pharmaValue}>{compound.peakTime}</Text>
               </View>
@@ -128,8 +125,8 @@ function CompoundModal({ compound, onClose }: { compound: typeof COMPOUNDS[0] | 
               <Text key={r} style={modalStyles.reference}>• {r}</Text>
             ))}
 
-            <View style={modalStyles.disclaimer}>
-              <Ionicons name="information-circle" size={16} color={COLORS.accentYellow} />
+            <View style={[modalStyles.disclaimer, SHADOW.soft]}>
+              <Ionicons name="information-circle" size={16} color={COLORS.gold} />
               <Text style={modalStyles.disclaimerText}>For informational and research purposes only. Not medical advice.</Text>
             </View>
           </ScrollView>
@@ -153,8 +150,7 @@ export default function ResearchScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#0A0F15']} style={StyleSheet.absoluteFill} />
+      <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
         <Text style={styles.title}>Research</Text>
@@ -162,7 +158,7 @@ export default function ResearchScreen() {
       </View>
 
       {/* Search */}
-      <View style={styles.searchContainer}>
+      <View style={[styles.searchContainer, SHADOW.soft]}>
         <Ionicons name="search" size={18} color={COLORS.textSecondary} style={styles.searchIcon} />
         <TextInput
           style={styles.searchInput}
@@ -181,7 +177,7 @@ export default function ResearchScreen() {
             style={[styles.categoryChip, category === cat && styles.categoryChipActive]}
             onPress={() => setCategory(cat)}
           >
-            <Text style={[styles.categoryText, category === cat && { color: COLORS.accent }]}>{cat}</Text>
+            <Text style={[styles.categoryText, category === cat && { color: COLORS.purple }]}>{cat}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -189,9 +185,9 @@ export default function ResearchScreen() {
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {filtered.map(compound => (
           <TouchableOpacity key={compound.id} onPress={() => setSelected(compound)} activeOpacity={0.8}>
-            <GlassCard style={styles.compoundCard}>
+            <View style={[styles.compoundCard, SHADOW.sm]}>
               <View style={styles.compoundHeader}>
-                <View>
+                <View style={{ flex: 1 }}>
                   <Text style={styles.compoundName}>{compound.name}</Text>
                   <Text style={styles.compoundAlias}>{compound.aliases[0]}</Text>
                 </View>
@@ -207,7 +203,7 @@ export default function ResearchScreen() {
                 </View>
                 <Ionicons name="chevron-forward" size={14} color={COLORS.textTertiary} />
               </View>
-            </GlassCard>
+            </View>
           </TouchableOpacity>
         ))}
         <View style={{ height: 32 }} />
@@ -225,7 +221,7 @@ const styles = StyleSheet.create({
   subtitle: { color: COLORS.textSecondary, fontSize: 13, marginTop: 2 },
   searchContainer: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: COLORS.bgGlass, borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bgCard, borderWidth: 1, borderColor: COLORS.borderMid,
     borderRadius: RADIUS.md, marginHorizontal: SPACING.md, marginBottom: 12,
     paddingHorizontal: 12,
   },
@@ -235,21 +231,24 @@ const styles = StyleSheet.create({
   categoryContent: { paddingHorizontal: SPACING.md, gap: 8 },
   categoryChip: {
     paddingHorizontal: 14, paddingVertical: 8,
-    borderRadius: RADIUS.pill, backgroundColor: COLORS.bgGlass,
-    borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    borderRadius: RADIUS.pill, backgroundColor: COLORS.bgCard,
+    borderWidth: 1, borderColor: COLORS.borderMid,
   },
-  categoryChipActive: { backgroundColor: COLORS.accent + '22', borderColor: COLORS.accent },
+  categoryChipActive: { backgroundColor: COLORS.purpleLight, borderColor: COLORS.purple },
   categoryText: { color: COLORS.textSecondary, fontSize: 13, fontWeight: '600' },
   scroll: { paddingHorizontal: SPACING.md, paddingTop: 12 },
-  compoundCard: { marginBottom: 10 },
+  compoundCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: 16, marginBottom: 10,
+  },
   compoundHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 },
   compoundName: { color: COLORS.textPrimary, fontSize: 17, fontWeight: '700' },
   compoundAlias: { color: COLORS.textSecondary, fontSize: 12, marginTop: 2 },
   categoryBadge: {
-    backgroundColor: COLORS.accent + '22', borderRadius: RADIUS.sm,
-    paddingHorizontal: 8, paddingVertical: 4, borderWidth: 1, borderColor: COLORS.accent + '44',
+    backgroundColor: COLORS.purpleLight, borderRadius: RADIUS.sm,
+    paddingHorizontal: 8, paddingVertical: 4,
   },
-  categoryBadgeText: { color: COLORS.accent, fontSize: 11, fontWeight: '600' },
+  categoryBadgeText: { color: COLORS.purple, fontSize: 11, fontWeight: '600' },
   compoundSummary: { color: COLORS.textSecondary, fontSize: 13, lineHeight: 18, marginBottom: 8 },
   metaRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   meta: { flexDirection: 'row', alignItems: 'center', gap: 4 },
@@ -257,25 +256,29 @@ const styles = StyleSheet.create({
 });
 
 const modalStyles = StyleSheet.create({
-  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'flex-end' },
+  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },
   sheet: {
     height: '80%', borderTopLeftRadius: RADIUS.xl, borderTopRightRadius: RADIUS.xl,
+    backgroundColor: COLORS.bgCard,
     padding: SPACING.lg, paddingBottom: 40, overflow: 'hidden',
-    borderWidth: 1, borderBottomWidth: 0, borderColor: COLORS.bgGlassBorder,
   },
   sheetHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 },
   compoundName: { color: COLORS.textPrimary, fontSize: 24, fontWeight: '800' },
   compoundAlias: { color: COLORS.textSecondary, fontSize: 13, marginTop: 4 },
+  closeBtn: {
+    width: 32, height: 32, borderRadius: 16,
+    backgroundColor: COLORS.bg, justifyContent: 'center', alignItems: 'center',
+  },
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 16 },
   badge: {
-    backgroundColor: COLORS.bgGlass, borderRadius: RADIUS.sm,
-    paddingHorizontal: 10, paddingVertical: 4, borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.purpleLight, borderRadius: RADIUS.sm,
+    paddingHorizontal: 10, paddingVertical: 4,
   },
-  badgeText: { color: COLORS.textSecondary, fontSize: 12 },
-  pharmaRow: { flexDirection: 'row', gap: 16, marginBottom: 16 },
+  badgeText: { color: COLORS.purple, fontSize: 12, fontWeight: '600' },
+  pharmaRow: { flexDirection: 'row', gap: 12, marginBottom: 16 },
   pharmaStat: {
-    flex: 1, backgroundColor: COLORS.bgGlass, borderRadius: RADIUS.md,
-    padding: 12, borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    flex: 1, backgroundColor: COLORS.bg, borderRadius: RADIUS.md,
+    padding: 12, borderWidth: 1, borderColor: COLORS.border,
   },
   pharmaLabel: { color: COLORS.textSecondary, fontSize: 10, fontWeight: '700', letterSpacing: 1, marginBottom: 4 },
   pharmaValue: { color: COLORS.textPrimary, fontSize: 16, fontWeight: '600' },
@@ -284,8 +287,8 @@ const modalStyles = StyleSheet.create({
   reference: { color: COLORS.textSecondary, fontSize: 13, lineHeight: 20, marginBottom: 4 },
   disclaimer: {
     flexDirection: 'row', gap: 8, alignItems: 'flex-start',
-    backgroundColor: COLORS.accentYellow + '11', borderRadius: RADIUS.md,
-    padding: 12, marginTop: 16, borderWidth: 1, borderColor: COLORS.accentYellow + '33',
+    backgroundColor: COLORS.goldLight, borderRadius: RADIUS.md,
+    padding: 12, marginTop: 16,
   },
-  disclaimerText: { color: COLORS.accentYellow, fontSize: 12, flex: 1, lineHeight: 18 },
+  disclaimerText: { color: '#92400E', fontSize: 12, flex: 1, lineHeight: 18 },
 });

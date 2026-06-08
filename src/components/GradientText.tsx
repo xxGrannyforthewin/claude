@@ -8,13 +8,7 @@ interface Props {
   gradient?: 'primary' | 'warm' | 'cool';
 }
 
-// Simplified gradient text (no native gradient text on RN, use accent color)
 export default function GradientText({ children, style, gradient = 'primary' }: Props) {
-  const color = gradient === 'warm'
-    ? COLORS.accentWarm
-    : gradient === 'cool'
-    ? COLORS.accentAlt
-    : COLORS.accent;
-
+  const color = gradient === 'warm' ? COLORS.roseGold : gradient === 'cool' ? COLORS.blue : COLORS.purple;
   return <Text style={[{ color }, style]}>{children}</Text>;
 }

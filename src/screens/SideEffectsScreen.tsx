@@ -3,11 +3,9 @@ import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
   Modal, TextInput, StatusBar,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import { COLORS, SPACING, RADIUS } from '../constants/theme';
-import GlassCard from '../components/GlassCard';
+import { COLORS, SPACING, RADIUS, SHADOW } from '../constants/theme';
 import PillButton from '../components/PillButton';
 import { Storage } from '../store/storage';
 import { SideEffect } from '../types';
@@ -20,7 +18,7 @@ const SYMPTOMS = [
 ];
 
 const SEVERITY_COLORS = [
-  COLORS.accentGreen, COLORS.accentAlt, COLORS.accentYellow, COLORS.accentWarm, COLORS.accentRed,
+  COLORS.green, COLORS.blue, COLORS.orange, COLORS.roseGold, COLORS.coral,
 ];
 
 function AddEffectModal({ visible, onClose, onSave }: {
@@ -41,7 +39,6 @@ function AddEffectModal({ visible, onClose, onSave }: {
       <View style={modalStyles.overlay}>
         <ScrollView>
           <View style={modalStyles.sheet}>
-            <LinearGradient colors={['#0F0A1A', '#0A0A0F']} style={StyleSheet.absoluteFill} />
             <Text style={modalStyles.title}>Log Side Effect</Text>
 
             <Text style={modalStyles.label}>SYMPTOM</Text>
@@ -52,7 +49,7 @@ function AddEffectModal({ visible, onClose, onSave }: {
                   style={[modalStyles.symptomBtn, symptom === s && modalStyles.symptomBtnActive]}
                   onPress={() => setSymptom(s)}
                 >
-                  <Text style={[modalStyles.symptomText, symptom === s && { color: COLORS.accent }]}>{s}</Text>
+                  <Text style={[modalStyles.symptomText, symptom === s && { color: COLORS.purple }]}>{s}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -62,7 +59,10 @@ function AddEffectModal({ visible, onClose, onSave }: {
               {[1,2,3,4,5].map(n => (
                 <TouchableOpacity
                   key={n}
-                  style={[modalStyles.severityBtn, severity === n && { backgroundColor: SEVERITY_COLORS[n-1] + '33', borderColor: SEVERITY_COLORS[n-1] }]}
+                  style={[
+                    modalStyles.severityBtn,
+                    severity === n && { backgroundColor: SEVERITY_COLORS[n-1] + '22', borderColor: SEVERITY_COLORS[n-1] },
+                  ]}
                   onPress={() => setSeverity(n as any)}
                 >
                   <Text style={[modalStyles.severityText, severity === n && { color: SEVERITY_COLORS[n-1] }]}>{n}</Text>
@@ -91,7 +91,7 @@ function AddEffectModal({ visible, onClose, onSave }: {
   );
 }
 
-export default function SideEffectsScreen() {
+export default function SideEffectsScreen({ navigation }: any) {
   const [effects, setEffects] = useState<SideEffect[]>([]);
   const [showAdd, setShowAdd] = useState(false);
 
@@ -127,13 +127,15 @@ export default function SideEffectsScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#150A0A']} style={StyleSheet.absoluteFill} />
+      <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+          <Ionicons name="chevron-back" size={20} color={COLORS.textPrimary} />
+        </TouchableOpacity>
         <Text style={styles.title}>Side Effects</Text>
         <TouchableOpacity style={styles.addBtn} onPress={() => setShowAdd(true)}>
-          <Ionicons name="add" size={24} color={COLORS.accentRed} />
+          <Ionicons name="add" size={24} color={COLORS.purple} />
         </TouchableOpacity>
       </View>
 
@@ -142,7 +144,7 @@ export default function SideEffectsScreen() {
         {topSymptoms.length > 0 && (
           <>
             <Text style={styles.sectionLabel}>SYMPTOM SUMMARY</Text>
-            <GlassCard variant="accent" style={styles.summaryCard}>
+            <View style={[styles.summaryCard, SHADOW.sm]}>
               {topSymptoms.map(([symptom, data], i) => (
                 <View key={symptom} style={[styles.summaryRow, i > 0 && styles.summaryBorder]}>
                   <View style={[styles.severityDot, { backgroundColor: SEVERITY_COLORS[Math.round(data.avgSeverity) - 1] }]} />
@@ -153,21 +155,24 @@ export default function SideEffectsScreen() {
                   </Text>
                 </View>
               ))}
-            </GlassCard>
+            </View>
           </>
         )}
 
         {/* Log */}
         <Text style={styles.sectionLabel}>LOG ({effects.length})</Text>
         {effects.length === 0 && (
-          <GlassCard style={styles.emptyCard}>
+          <View style={[styles.emptyCard, SHADOW.sm]}>
             <Text style={styles.emptyText}>No side effects logged</Text>
-          </GlassCard>
+          </View>
         )}
         {effects.map(e => (
-          <GlassCard key={e.id} style={styles.effectCard}>
+          <View key={e.id} style={[styles.effectCard, SHADOW.sm]}>
             <View style={styles.effectHeader}>
-              <View style={[styles.severityBadge, { backgroundColor: SEVERITY_COLORS[e.severity - 1] + '22', borderColor: SEVERITY_COLORS[e.severity - 1] + '55' }]}>
+              <View style={[styles.severityBadge, {
+                backgroundColor: SEVERITY_COLORS[e.severity - 1] + '22',
+                borderColor: SEVERITY_COLORS[e.severity - 1] + '55',
+              }]}>
                 <Text style={[styles.severityNum, { color: SEVERITY_COLORS[e.severity - 1] }]}>{e.severity}</Text>
               </View>
               <Text style={styles.effectSymptom}>{e.symptom}</Text>
@@ -176,7 +181,7 @@ export default function SideEffectsScreen() {
               </Text>
             </View>
             {e.notes ? <Text style={styles.effectNotes}>{e.notes}</Text> : null}
-          </GlassCard>
+          </View>
         ))}
 
         <View style={{ height: 32 }} />
@@ -190,27 +195,46 @@ export default function SideEffectsScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
   header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    flexDirection: 'row', alignItems: 'center',
     paddingTop: 60, paddingHorizontal: SPACING.md, paddingBottom: SPACING.md,
+    gap: 12,
   },
-  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
+  backBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center',
+    ...SHADOW.sm,
+  },
+  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800', flex: 1 },
   addBtn: {
     width: 40, height: 40, borderRadius: 20,
-    backgroundColor: COLORS.bgGlass, borderWidth: 1,
-    borderColor: COLORS.bgGlassBorder, justifyContent: 'center', alignItems: 'center',
+    backgroundColor: COLORS.purpleLight,
+    justifyContent: 'center', alignItems: 'center',
   },
   scroll: { paddingHorizontal: SPACING.md },
-  sectionLabel: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.5, marginBottom: 8, marginTop: 8 },
-  summaryCard: { marginBottom: 8 },
+  sectionLabel: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, textTransform: 'uppercase',
+    marginBottom: 8, marginTop: 8,
+  },
+  summaryCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 8,
+  },
   summaryRow: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 8 },
   summaryBorder: { borderTopWidth: 1, borderTopColor: COLORS.border },
   severityDot: { width: 8, height: 8, borderRadius: 4 },
   summarySymptom: { color: COLORS.textPrimary, fontSize: 14, flex: 1 },
   summaryCount: { color: COLORS.textSecondary, fontSize: 13 },
   summaryAvg: { fontSize: 13, fontWeight: '600', width: 44, textAlign: 'right' },
-  emptyCard: { alignItems: 'center' },
+  emptyCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, alignItems: 'center',
+  },
   emptyText: { color: COLORS.textSecondary, fontSize: 14 },
-  effectCard: { marginBottom: 8 },
+  effectCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 8,
+  },
   effectHeader: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   severityBadge: {
     width: 32, height: 32, borderRadius: 8,
@@ -223,33 +247,36 @@ const styles = StyleSheet.create({
 });
 
 const modalStyles = StyleSheet.create({
-  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)' },
+  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' },
   sheet: {
     marginTop: 80,
+    backgroundColor: '#fff',
     borderTopLeftRadius: RADIUS.xl, borderTopRightRadius: RADIUS.xl,
-    padding: SPACING.lg, paddingBottom: 40, overflow: 'hidden', minHeight: 600,
-    borderWidth: 1, borderBottomWidth: 0, borderColor: COLORS.bgGlassBorder,
+    padding: SPACING.lg, paddingBottom: 40, minHeight: 600,
   },
   title: { color: COLORS.textPrimary, fontSize: 20, fontWeight: '700', marginBottom: 12 },
-  label: { color: COLORS.textSecondary, fontSize: 11, letterSpacing: 1.2, fontWeight: '600', marginBottom: 8, marginTop: 12 },
+  label: {
+    color: COLORS.textSecondary, fontSize: 10, letterSpacing: 1.2,
+    fontWeight: '700', textTransform: 'uppercase', marginBottom: 8, marginTop: 12,
+  },
   symptomGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   symptomBtn: {
     paddingHorizontal: 12, paddingVertical: 8, borderRadius: RADIUS.sm,
-    backgroundColor: COLORS.bgGlass, borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bg, borderWidth: 1, borderColor: COLORS.border,
   },
-  symptomBtnActive: { backgroundColor: COLORS.accent + '22', borderColor: COLORS.accent },
+  symptomBtnActive: { backgroundColor: COLORS.purpleLight, borderColor: COLORS.purple },
   symptomText: { color: COLORS.textSecondary, fontSize: 13 },
   severityRow: { flexDirection: 'row', gap: 8, marginBottom: 6 },
   severityBtn: {
     flex: 1, height: 44, borderRadius: RADIUS.md,
-    backgroundColor: COLORS.bgGlass, borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bg, borderWidth: 1, borderColor: COLORS.borderMid,
     justifyContent: 'center', alignItems: 'center',
   },
   severityText: { color: COLORS.textSecondary, fontSize: 18, fontWeight: '700' },
   severityCaption: { color: COLORS.textTertiary, fontSize: 12, textAlign: 'center', marginBottom: 4 },
   input: {
-    backgroundColor: COLORS.bgGlass, borderRadius: RADIUS.md,
-    borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bg, borderRadius: RADIUS.md,
+    borderWidth: 1, borderColor: COLORS.borderMid,
     color: COLORS.textPrimary, padding: 12, fontSize: 15,
   },
   btnRow: { flexDirection: 'row', marginTop: 20 },

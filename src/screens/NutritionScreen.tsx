@@ -6,7 +6,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import { COLORS, SPACING, RADIUS } from '../constants/theme';
+import { COLORS, SPACING, RADIUS, SHADOW } from '../constants/theme';
 import GlassCard from '../components/GlassCard';
 import ProgressRing from '../components/ProgressRing';
 import PillButton from '../components/PillButton';
@@ -57,7 +57,6 @@ function AddMealModal({ visible, onClose, onSave }: {
     <Modal visible={visible} transparent animationType="slide">
       <View style={modalStyles.overlay}>
         <View style={modalStyles.sheet}>
-          <LinearGradient colors={['#0F0A1A', '#0A0A0F']} style={StyleSheet.absoluteFill} />
           <Text style={modalStyles.title}>Log Meal</Text>
 
           <Text style={modalStyles.label}>MEAL NAME</Text>
@@ -92,7 +91,7 @@ function AddMealModal({ visible, onClose, onSave }: {
   );
 }
 
-export default function NutritionScreen() {
+export default function NutritionScreen({ navigation }: any) {
   const [logs, setLogs] = useState<NutritionLog[]>([]);
   const [goals, setGoals] = useState<UserGoals>(DEFAULT_GOALS);
   const [showAdd, setShowAdd] = useState(false);
@@ -133,27 +132,29 @@ export default function NutritionScreen() {
   };
 
   const macros = [
-    { label: 'Calories', value: totals.calories, goal: goals.dailyCalories, color: COLORS.accentWarm, unit: 'kcal' },
-    { label: 'Protein', value: totals.protein, goal: goals.dailyProtein, color: COLORS.accent, unit: 'g' },
-    { label: 'Carbs', value: totals.carbs, goal: goals.dailyCarbs, color: COLORS.accentBlue, unit: 'g' },
-    { label: 'Fat', value: totals.fat, goal: goals.dailyFat, color: COLORS.accentGreen, unit: 'g' },
+    { label: 'Calories', value: totals.calories, goal: goals.dailyCalories, color: COLORS.orange, unit: 'kcal' },
+    { label: 'Protein', value: totals.protein, goal: goals.dailyProtein, color: COLORS.purple, unit: 'g' },
+    { label: 'Carbs', value: totals.carbs, goal: goals.dailyCarbs, color: COLORS.blue, unit: 'g' },
+    { label: 'Fat', value: totals.fat, goal: goals.dailyFat, color: COLORS.green, unit: 'g' },
   ];
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient colors={['#0A0A0F', '#120A0A']} style={StyleSheet.absoluteFill} />
+      <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+          <Ionicons name="chevron-back" size={20} color={COLORS.textPrimary} />
+        </TouchableOpacity>
         <Text style={styles.title}>Nutrition</Text>
         <TouchableOpacity style={styles.addBtn} onPress={() => setShowAdd(true)}>
-          <Ionicons name="add" size={24} color={COLORS.accentWarm} />
+          <Ionicons name="add" size={24} color={COLORS.purple} />
         </TouchableOpacity>
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Macro rings */}
-        <GlassCard variant="accent" style={styles.ringCard}>
+        <View style={[styles.ringCard, SHADOW.sm]}>
           <View style={styles.ringsRow}>
             {macros.map(m => (
               <ProgressRing
@@ -183,42 +184,42 @@ export default function NutritionScreen() {
               </View>
             ))}
           </View>
-        </GlassCard>
+        </View>
 
         {/* Fiber */}
-        <GlassCard style={styles.fiberCard}>
+        <View style={[styles.fiberCard, SHADOW.sm]}>
           <View style={styles.fiberRow}>
-            <Ionicons name="leaf" size={18} color={COLORS.accentGreen} />
+            <Ionicons name="leaf" size={18} color={COLORS.green} />
             <Text style={styles.fiberLabel}>Fiber</Text>
             <Text style={styles.fiberValue}>{totals.fiber.toFixed(1)}g / {goals.dailyFiber}g</Text>
           </View>
           <View style={styles.barBg}>
             <LinearGradient
-              colors={[COLORS.accentGreen, COLORS.accentGreen + '66'] as [string, string]}
+              colors={[COLORS.green, COLORS.green + '66'] as [string, string]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
               style={[styles.barFill, { width: `${Math.min((totals.fiber / goals.dailyFiber) * 100, 100)}%` as any }]}
             />
           </View>
-        </GlassCard>
+        </View>
 
         {/* Today's meals */}
         <Text style={styles.sectionLabel}>TODAY'S MEALS</Text>
         {todayLogs.length === 0 && (
-          <GlassCard style={styles.emptyCard}>
+          <View style={[styles.emptyCard, SHADOW.sm]}>
             <Text style={styles.emptyText}>No meals logged yet</Text>
-          </GlassCard>
+          </View>
         )}
         {todayLogs.map(log => (
-          <GlassCard key={log.id} style={styles.mealCard}>
+          <View key={log.id} style={[styles.mealCard, SHADOW.sm]}>
             <View style={styles.mealHeader}>
               <Text style={styles.mealName}>{log.meal}</Text>
               <Text style={styles.mealCal}>{log.calories} kcal</Text>
             </View>
             <View style={styles.mealMacros}>
               {[
-                { label: 'P', value: log.protein, color: COLORS.accent },
-                { label: 'C', value: log.carbs, color: COLORS.accentBlue },
-                { label: 'F', value: log.fat, color: COLORS.accentWarm },
+                { label: 'P', value: log.protein, color: COLORS.purple },
+                { label: 'C', value: log.carbs, color: COLORS.blue },
+                { label: 'F', value: log.fat, color: COLORS.orange },
               ].map(m => (
                 <View key={m.label} style={styles.mealMacro}>
                   <Text style={[styles.mealMacroLabel, { color: m.color }]}>{m.label}</Text>
@@ -229,7 +230,7 @@ export default function NutritionScreen() {
                 {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </Text>
             </View>
-          </GlassCard>
+          </View>
         ))}
 
         <View style={{ height: 32 }} />
@@ -243,35 +244,57 @@ export default function NutritionScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
   header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    flexDirection: 'row', alignItems: 'center',
     paddingTop: 60, paddingHorizontal: SPACING.md, paddingBottom: SPACING.md,
+    gap: 12,
   },
-  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800' },
+  backBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center',
+    ...SHADOW.sm,
+  },
+  title: { color: COLORS.textPrimary, fontSize: 28, fontWeight: '800', flex: 1 },
   addBtn: {
     width: 40, height: 40, borderRadius: 20,
-    backgroundColor: COLORS.bgGlass, borderWidth: 1,
-    borderColor: COLORS.bgGlassBorder, justifyContent: 'center', alignItems: 'center',
+    backgroundColor: COLORS.purpleLight,
+    justifyContent: 'center', alignItems: 'center',
   },
   scroll: { paddingHorizontal: SPACING.md },
-  ringCard: { marginBottom: 12 },
+  ringCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 12,
+  },
   ringsRow: { flexDirection: 'row', justifyContent: 'space-around', marginBottom: 16 },
   barsContainer: { gap: 10 },
   barRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   barLabel: { color: COLORS.textSecondary, fontSize: 11, width: 54 },
-  barBg: { flex: 1, height: 4, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 2, overflow: 'hidden' },
+  barBg: { flex: 1, height: 4, backgroundColor: COLORS.border, borderRadius: 2, overflow: 'hidden' },
   barFill: { height: 4, borderRadius: 2 },
   barValue: { color: COLORS.textSecondary, fontSize: 10, width: 70, textAlign: 'right' },
-  fiberCard: { marginBottom: 12 },
+  fiberCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 12,
+  },
   fiberRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 },
   fiberLabel: { color: COLORS.textPrimary, fontSize: 14, fontWeight: '600', flex: 1 },
   fiberValue: { color: COLORS.textSecondary, fontSize: 13 },
-  sectionLabel: { color: COLORS.textSecondary, fontSize: 11, fontWeight: '700', letterSpacing: 1.5, marginBottom: 8, marginTop: 8 },
-  emptyCard: { alignItems: 'center' },
+  sectionLabel: {
+    color: COLORS.textSecondary, fontSize: 10, fontWeight: '700',
+    letterSpacing: 1.2, textTransform: 'uppercase',
+    marginBottom: 8, marginTop: 8,
+  },
+  emptyCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, alignItems: 'center',
+  },
   emptyText: { color: COLORS.textSecondary, fontSize: 14 },
-  mealCard: { marginBottom: 8 },
+  mealCard: {
+    backgroundColor: COLORS.bgCard, borderRadius: RADIUS.lg,
+    padding: SPACING.md, marginBottom: 8,
+  },
   mealHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
   mealName: { color: COLORS.textPrimary, fontSize: 16, fontWeight: '600' },
-  mealCal: { color: COLORS.accentWarm, fontSize: 14, fontWeight: '600' },
+  mealCal: { color: COLORS.orange, fontSize: 14, fontWeight: '600' },
   mealMacros: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   mealMacro: { flexDirection: 'row', gap: 3 },
   mealMacroLabel: { fontSize: 12, fontWeight: '700' },
@@ -280,17 +303,20 @@ const styles = StyleSheet.create({
 });
 
 const modalStyles = StyleSheet.create({
-  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'flex-end' },
+  overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },
   sheet: {
+    backgroundColor: '#fff',
     borderTopLeftRadius: RADIUS.xl, borderTopRightRadius: RADIUS.xl,
-    padding: SPACING.lg, paddingBottom: 40, overflow: 'hidden',
-    borderWidth: 1, borderBottomWidth: 0, borderColor: COLORS.bgGlassBorder,
+    padding: SPACING.lg, paddingBottom: 40,
   },
   title: { color: COLORS.textPrimary, fontSize: 20, fontWeight: '700', marginBottom: 12 },
-  label: { color: COLORS.textSecondary, fontSize: 11, letterSpacing: 1.2, fontWeight: '600', marginBottom: 6, marginTop: 10 },
+  label: {
+    color: COLORS.textSecondary, fontSize: 10, letterSpacing: 1.2,
+    fontWeight: '700', textTransform: 'uppercase', marginBottom: 6, marginTop: 10,
+  },
   input: {
-    backgroundColor: COLORS.bgGlass, borderRadius: RADIUS.md,
-    borderWidth: 1, borderColor: COLORS.bgGlassBorder,
+    backgroundColor: COLORS.bg, borderRadius: RADIUS.md,
+    borderWidth: 1, borderColor: COLORS.borderMid,
     color: COLORS.textPrimary, padding: 12, fontSize: 15,
   },
   row: { flexDirection: 'row', marginTop: 4 },
