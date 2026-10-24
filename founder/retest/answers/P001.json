@@ -1,0 +1,13 @@
+{
+  "id": "P001",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "I already have a boutique near Hillcroft I trust, and I'm at the halal markets every weekend anyway, so I don't need a new store. Westheimer means a separate drive, and 15% off isn't enough to make me switch from someone who already knows my size and taste.",
+  "objection": "I don't know these people. My shop gets me, and I'd only be going to a new place to try it, not because I need anything right now.",
+  "would_change_my_mind": "If friends or family I trust wore their pieces to a wedding or henna night and the embroidery and fabric really stood out, I'd go and look before Eid.",
+  "price_too_cheap": 30,
+  "price_cheap": 55,
+  "price_expensive": 110,
+  "price_too_expensive": 170
+}

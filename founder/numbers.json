@@ -1,0 +1,115 @@
+{
+  "business": "Bonita Style Houston (store only; online sales excluded)",
+  "unit": "in-store order",
+  "price": 85.0,
+  "variable": [
+    {
+      "label": "Cost of goods, 46% of the $85 ticket (ESTIMATE from the Aug online plan: $9,000 COGS / $19,500 sales)",
+      "cost": 39.1
+    },
+    {
+      "label": "Card fees, Shopify POS ~2.6% + $0.10 (ESTIMATE, check your Shopify plan)",
+      "cost": 2.31
+    },
+    {
+      "label": "Bag, tissue, tag",
+      "cost": 1.5
+    }
+  ],
+  "fixed_monthly": [
+    {
+      "label": "Rent (owner's sheet)",
+      "cost": 4375
+    },
+    {
+      "label": "Utilities (owner's sheet)",
+      "cost": 345
+    },
+    {
+      "label": "Phone + cameras (owner's sheet)",
+      "cost": 60
+    },
+    {
+      "label": "Staff wages + payroll tax, 3 hourly roles (ESTIMATE: 2 x 30h at $14 + 30h at $16, +10% tax)",
+      "cost": 6290
+    },
+    {
+      "label": "Insurance (ESTIMATE)",
+      "cost": 100
+    },
+    {
+      "label": "Shopify POS Pro + Homebase/payroll software (ESTIMATE)",
+      "cost": 150
+    },
+    {
+      "label": "Local store ads, Houston-targeted (ESTIMATE)",
+      "cost": 500
+    }
+  ],
+  "startup": [
+    {
+      "label": "Deposit + first rent (paid)",
+      "cost": 9000
+    },
+    {
+      "label": "Flooring (paid)",
+      "cost": 6000
+    },
+    {
+      "label": "Painting (paid)",
+      "cost": 2000
+    },
+    {
+      "label": "Decor stands from Turkey (paid)",
+      "cost": 3500
+    },
+    {
+      "label": "Sign",
+      "cost": 10000
+    },
+    {
+      "label": "Chandeliers",
+      "cost": 1500
+    },
+    {
+      "label": "Misc decor",
+      "cost": 2000
+    },
+    {
+      "label": "Packaging",
+      "cost": 1000
+    },
+    {
+      "label": "Plumbing/electrical",
+      "cost": 836
+    },
+    {
+      "label": "Shopify POS hardware",
+      "cost": 350
+    },
+    {
+      "label": "Cameras",
+      "cost": 1000
+    },
+    {
+      "label": "Occupancy permit",
+      "cost": 200
+    }
+  ],
+  "days_per_month": 30,
+  "plan_per_day": 8,
+  "ramp_per_day": [
+    8,
+    7,
+    5,
+    9,
+    14,
+    5,
+    6,
+    5,
+    4,
+    5,
+    6,
+    7
+  ]
+}

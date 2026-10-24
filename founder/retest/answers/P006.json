@@ -1,0 +1,13 @@
+{
+  "id": "P006",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "convenience",
+  "reason": "It's five minutes from where I already shop on weekends, and I can touch the fabric and have someone check the length on me before I pay, which is exactly why I stopped buying abayas online. If the crepe feels good in my hand I'll likely take one thobe for the wedding season, but I'm not stocking up on the first visit.",
+  "objection": "Embroidered crepe at $75 can still turn out thin, see-through in daylight, or scratchy at the seams. I need to feel it and see it against the light before I trust a new store, especially one with no track record.",
+  "would_change_my_mind": "If the fabric feels cheap or sheer when I hold it up, I walk out with nothing, discount or not.",
+  "price_too_cheap": 30,
+  "price_cheap": 55,
+  "price_expensive": 95,
+  "price_too_expensive": 140
+}

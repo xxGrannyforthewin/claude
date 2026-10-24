@@ -1,0 +1,13 @@
+{
+  "id": "P001",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "I already have an aunty's boutique near Hillcroft and a bazaar seller in Sugar Land who know my size and my family. I don't need to drive out to Westheimer for a 15% off opening day when nothing big like Eid is coming up this month.",
+  "objection": "Westheimer is a drive from where I live, and my usual shop already does alterations and lets me try things on. A new store would have to be clearly better, not just new.",
+  "would_change_my_mind": "If my friends showed up in Bonita thobes at a wedding or henna night and the embroidery looked better than what my usual shop carries, I'd make the drive to see it.",
+  "price_too_cheap": 30,
+  "price_cheap": 55,
+  "price_expensive": 110,
+  "price_too_expensive": 170
+}

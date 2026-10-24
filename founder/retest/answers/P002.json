@@ -1,0 +1,13 @@
+{
+  "id": "P002",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "convenience",
+  "reason": "It's five minutes from where I already shop on weekends, and I can feel the fabric and have them check the length on me, which is exactly why I stopped buying online. I'd stop in and if one embroidered thobe looks right on me I'd buy it during the opening discount, but just one to start.",
+  "objection": "I'm worried the designs will be the same plain black abayas or the same heavy embroidery I already see at every shop on Hillcroft, nothing that feels a little more elegant for a woman my age.",
+  "would_change_my_mind": "If I walk in and the racks look plain or all the same, I'd leave with nothing; seeing pieces with nicer cuts and quality fabric in real life is what decides it.",
+  "price_too_cheap": 30,
+  "price_cheap": 55,
+  "price_expensive": 110,
+  "price_too_expensive": 160
+}

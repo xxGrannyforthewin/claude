@@ -1,0 +1,222 @@
+[
+ {
+  "id": "P001",
+  "name": "Alma",
+  "age": 18,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 156000,
+  "behaviour": "Loyal to a local shop",
+  "behaviour_how": "Already has a boutique or mosque-bazaar seller near Hillcroft or Sugar Land she trusts.",
+  "objection": "Westheimer is a drive from where I live",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P002",
+  "name": "Lucia",
+  "age": 53,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 90000,
+  "behaviour": "Must try it on",
+  "behaviour_how": "Has been burned by online sizing and length, so prefers to touch the fabric and try before buying.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P003",
+  "name": "Seth",
+  "age": 44,
+  "segment": "Modest dresser who is not part of a big local community (convert, Latina or Christian modest dresser)",
+  "income": 103000,
+  "behaviour": "Deal hunter",
+  "behaviour_how": "Buys abayas cheaply from Amazon, Shein or TikTok Shop and waits for sales.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you work full time in the Medical Center"
+ },
+ {
+  "id": "P004",
+  "name": "Kai",
+  "age": 40,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 114000,
+  "behaviour": "Occasion shopper",
+  "behaviour_how": "Buys mainly before Eid, Ramadan and weddings, and wants something new each time.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you live in Sugar Land and drive the Southwest Freeway most days"
+ },
+ {
+  "id": "P005",
+  "name": "Julian",
+  "age": 34,
+  "segment": "East African or African-American Muslim woman",
+  "income": 78000,
+  "behaviour": "TikTok and Instagram discoverer",
+  "behaviour_how": "Finds clothes through short videos and Lives, and orders from small brands she follows.",
+  "objection": "$75 to $80 is a lot when I can get an abaya for $25 online",
+  "habit": "you live in Sugar Land and drive the Southwest Freeway most days"
+ },
+ {
+  "id": "P006",
+  "name": "Selin",
+  "age": 42,
+  "segment": "East African or African-American Muslim woman",
+  "income": 95000,
+  "behaviour": "Must try it on",
+  "behaviour_how": "Has been burned by online sizing and length, so prefers to touch the fabric and try before buying.",
+  "objection": "Is the fabric see-through, scratchy or cheap feeling?",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P007",
+  "name": "Idris",
+  "age": 55,
+  "segment": "Modest dresser who is not part of a big local community (convert, Latina or Christian modest dresser)",
+  "income": 59000,
+  "behaviour": "Occasion shopper",
+  "behaviour_how": "Buys mainly before Eid, Ramadan and weddings, and wants something new each time.",
+  "objection": "Will it fit me and be long enough for my height?",
+  "habit": "you work full time in the Medical Center"
+ },
+ {
+  "id": "P008",
+  "name": "Malik",
+  "age": 50,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 44000,
+  "behaviour": "TikTok and Instagram discoverer",
+  "behaviour_how": "Finds clothes through short videos and Lives, and orders from small brands she follows.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you go to Friday prayer at a masjid in southwest Houston"
+ },
+ {
+  "id": "P009",
+  "name": "Chloe",
+  "age": 34,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 52000,
+  "behaviour": "Occasion shopper",
+  "behaviour_how": "Buys mainly before Eid, Ramadan and weddings, and wants something new each time.",
+  "objection": "Will it fit me and be long enough for my height?",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P010",
+  "name": "Sol",
+  "age": 52,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 102000,
+  "behaviour": "Family-abroad buyer",
+  "behaviour_how": "Gets most pieces from relatives or trips to the Middle East, South Asia or Turkey, where they cost less.",
+  "objection": "Is the fabric see-through, scratchy or cheap feeling?",
+  "habit": "you live in Sugar Land and drive the Southwest Freeway most days"
+ },
+ {
+  "id": "P011",
+  "name": "Jasper",
+  "age": 22,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 97000,
+  "behaviour": "Deal hunter",
+  "behaviour_how": "Buys abayas cheaply from Amazon, Shein or TikTok Shop and waits for sales.",
+  "objection": "Is the fabric see-through, scratchy or cheap feeling?",
+  "habit": "you work full time in the Medical Center"
+ },
+ {
+  "id": "P012",
+  "name": "Omar",
+  "age": 24,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 58000,
+  "behaviour": "Reads every review",
+  "behaviour_how": "Checks Google Maps ratings and comments before trying a new store.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you go to Friday prayer at a masjid in southwest Houston"
+ },
+ {
+  "id": "P013",
+  "name": "Sara",
+  "age": 47,
+  "segment": "Modest dresser who is not part of a big local community (convert, Latina or Christian modest dresser)",
+  "income": 79000,
+  "behaviour": "TikTok and Instagram discoverer",
+  "behaviour_how": "Finds clothes through short videos and Lives, and orders from small brands she follows.",
+  "objection": "$75 to $80 is a lot when I can get an abaya for $25 online",
+  "habit": "you work full time in the Medical Center"
+ },
+ {
+  "id": "P014",
+  "name": "Yara",
+  "age": 34,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 102000,
+  "behaviour": "Occasion shopper",
+  "behaviour_how": "Buys mainly before Eid, Ramadan and weddings, and wants something new each time.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P015",
+  "name": "Nadia",
+  "age": 26,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 130000,
+  "behaviour": "Family-abroad buyer",
+  "behaviour_how": "Gets most pieces from relatives or trips to the Middle East, South Asia or Turkey, where they cost less.",
+  "objection": "Is this a real boutique or just a pop-up that will close?",
+  "habit": "you go to Friday prayer at a masjid in southwest Houston"
+ },
+ {
+  "id": "P016",
+  "name": "Bilal",
+  "age": 36,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 61000,
+  "behaviour": "TikTok and Instagram discoverer",
+  "behaviour_how": "Finds clothes through short videos and Lives, and orders from small brands she follows.",
+  "objection": "Will it fit me and be long enough for my height?",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ },
+ {
+  "id": "P017",
+  "name": "Diego",
+  "age": 18,
+  "segment": "East African or African-American Muslim woman",
+  "income": 60000,
+  "behaviour": "Loyal to a local shop",
+  "behaviour_how": "Already has a boutique or mosque-bazaar seller near Hillcroft or Sugar Land she trusts.",
+  "objection": "Westheimer is a drive from where I live",
+  "habit": "you work full time in the Medical Center"
+ },
+ {
+  "id": "P018",
+  "name": "Fatima",
+  "age": 43,
+  "segment": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+  "income": 46000,
+  "behaviour": "Must try it on",
+  "behaviour_how": "Has been burned by online sizing and length, so prefers to touch the fabric and try before buying.",
+  "objection": "Is the fabric see-through, scratchy or cheap feeling?",
+  "habit": "you go to Friday prayer at a masjid in southwest Houston"
+ },
+ {
+  "id": "P019",
+  "name": "Leah",
+  "age": 19,
+  "segment": "East African or African-American Muslim woman",
+  "income": 48000,
+  "behaviour": "Deal hunter",
+  "behaviour_how": "Buys abayas cheaply from Amazon, Shein or TikTok Shop and waits for sales.",
+  "objection": "The styles might be too Arab-specific or too plain for my taste",
+  "habit": "you live in Sugar Land and drive the Southwest Freeway most days"
+ },
+ {
+  "id": "P020",
+  "name": "Dana",
+  "age": 52,
+  "segment": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+  "income": 139000,
+  "behaviour": "Reads every review",
+  "behaviour_how": "Checks Google Maps ratings and comments before trying a new store.",
+  "objection": "Westheimer is a drive from where I live",
+  "habit": "you shop at the halal markets on Hillcroft on weekends"
+ }
+]

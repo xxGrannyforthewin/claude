@@ -1,0 +1,13 @@
+{
+  "id": "P017",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "I already have a boutique and a bazaar seller I trust, and they know my size and what I like. Eid isn't coming up and I don't have a wedding this month, so I'm not driving out to Westheimer after a long shift just to try somewhere new.",
+  "objection": "Westheimer is a drive from where I live, and my auntie's shop already gives me good prices and lets me feel the fabric too, so what's the reason to switch?",
+  "would_change_my_mind": "A friend or cousin showing up to a wedding in one of their thobes and telling me the quality is better than what I usually get, right when I actually need an outfit.",
+  "price_too_cheap": 25,
+  "price_cheap": 40,
+  "price_expensive": 75,
+  "price_too_expensive": 110
+}

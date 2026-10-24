@@ -1,0 +1,13 @@
+{
+  "id": "P012",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "It's a brand new store with zero Google reviews, and I don't walk into a place until I've read what other girls say about it. The prices sound fine, but I'd wait a month or two and see the ratings and photos first.",
+  "objection": "No reviews yet, and from the description I can't tell if the thobes and abayas are actually my style or just the same plain, very traditional pieces I can already find on Hillcroft.",
+  "would_change_my_mind": "Seeing a solid Google Maps rating with real customer photos of the pieces, especially ones that look modern and not too plain.",
+  "price_too_cheap": 30,
+  "price_cheap": 50,
+  "price_expensive": 85,
+  "price_too_expensive": 120
+}

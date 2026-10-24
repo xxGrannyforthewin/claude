@@ -1,0 +1,102 @@
+{
+ "n": 20,
+ "seed": 564480,
+ "customer": {
+  "business": "Bonita Style Houston, a modest-fashion boutique (thobes, kaftans, abayas, jalabiyas, bishts)",
+  "target": "Women in greater Houston, 18 to 55, who dress modestly and buy outfits for Eid, weddings, henna nights, family gatherings and everyday wear",
+  "where": "Southwest Houston, 8401 Westheimer Rd (Westchase/Sharpstown area), drawing from Sugar Land, Katy, Stafford, Bellaire and Hillcroft",
+  "age": [
+   18,
+   55
+  ],
+  "segments": [
+   {
+    "name": "Arab-American woman (Levantine, Gulf, Egyptian, Iraqi or Maghrebi family)",
+    "share": 0.35,
+    "income": [
+     35000,
+     140000
+    ]
+   },
+   {
+    "name": "South Asian Muslim woman (Pakistani, Indian or Bangladeshi family)",
+    "share": 0.3,
+    "income": [
+     40000,
+     160000
+    ]
+   },
+   {
+    "name": "East African or African-American Muslim woman",
+    "share": 0.2,
+    "income": [
+     28000,
+     95000
+    ]
+   },
+   {
+    "name": "Modest dresser who is not part of a big local community (convert, Latina or Christian modest dresser)",
+    "share": 0.15,
+    "income": [
+     30000,
+     110000
+    ]
+   }
+  ],
+  "behaviours": [
+   {
+    "name": "Occasion shopper",
+    "share": 0.22,
+    "how": "Buys mainly before Eid, Ramadan and weddings, and wants something new each time."
+   },
+   {
+    "name": "TikTok and Instagram discoverer",
+    "share": 0.18,
+    "how": "Finds clothes through short videos and Lives, and orders from small brands she follows."
+   },
+   {
+    "name": "Must try it on",
+    "share": 0.16,
+    "how": "Has been burned by online sizing and length, so prefers to touch the fabric and try before buying."
+   },
+   {
+    "name": "Deal hunter",
+    "share": 0.14,
+    "how": "Buys abayas cheaply from Amazon, Shein or TikTok Shop and waits for sales."
+   },
+   {
+    "name": "Family-abroad buyer",
+    "share": 0.12,
+    "how": "Gets most pieces from relatives or trips to the Middle East, South Asia or Turkey, where they cost less."
+   },
+   {
+    "name": "Loyal to a local shop",
+    "share": 0.1,
+    "how": "Already has a boutique or mosque-bazaar seller near Hillcroft or Sugar Land she trusts."
+   },
+   {
+    "name": "Reads every review",
+    "share": 0.08,
+    "how": "Checks Google Maps ratings and comments before trying a new store."
+   }
+  ],
+  "objections": [
+   "Will it fit me and be long enough for my height?",
+   "Is the fabric see-through, scratchy or cheap feeling?",
+   "$75 to $80 is a lot when I can get an abaya for $25 online",
+   "Westheimer is a drive from where I live",
+   "I can get the same styles from family back home for less",
+   "The styles might be too Arab-specific or too plain for my taste",
+   "Is this a real boutique or just a pop-up that will close?"
+  ],
+  "habits": [
+   "you go to Friday prayer at a masjid in southwest Houston",
+   "you live in Sugar Land and drive the Southwest Freeway most days",
+   "you have a cousin's wedding coming up in December",
+   "you watch TikTok Lives in the evening after the kids sleep",
+   "you shop at the halal markets on Hillcroft on weekends",
+   "you work full time in the Medical Center"
+  ]
+ },
+ "pitch": "Bonita Style, a modest boutique, opens its first store on Sunday, November 1, 2026, at 8401 Westheimer Rd, Suite 130, Houston (near Westchase).\nRacks of embroidered crepe thobes ($74.99 to $79.99), everyday abayas ($45), kaftans, jalabiya sets ($119.99), bishts ($94.99) and chiffon hijabs ($10).\nYou can try everything on in the fitting rooms, and staff help with length and sizing.\nOpening day only: 15% off everything.\nThe same brand sells online and on TikTok (about 30,000 followers), so you may have seen its videos."
+}

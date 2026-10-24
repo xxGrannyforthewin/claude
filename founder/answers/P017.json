@@ -1,0 +1,13 @@
+{
+  "id": "P017",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "I already have a boutique near Hillcroft that knows me and my sizes, and between full-time shifts at the Medical Center I'm not driving out to Westheimer on a Sunday for 15% off. If I need something for Eid or a wedding, I go to my lady first.",
+  "objection": "Westheimer is a drive from where I live, and my usual seller already gives me good prices and lets me pay over time. I don't know this store, so why switch?",
+  "would_change_my_mind": "If a friend or my cousin showed me a thobe from there that was clearly better quality than what my shop carries, or if they had something specific I couldn't find for an upcoming wedding.",
+  "price_too_cheap": 25,
+  "price_cheap": 45,
+  "price_expensive": 80,
+  "price_too_expensive": 110
+}
