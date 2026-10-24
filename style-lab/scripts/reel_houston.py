@@ -75,13 +75,14 @@ def build(shots, track, out_name, music_start=0.0):
 
 if __name__ == "__main__":
     RACKS = r.clip(3)  # 2026-10-17 store video: racks of thobes on the gold rails
-    shots = [  # face-free; storefront first, like the reference
+    shots = [  # face-free; storefront first like the reference, then the build-out from empty shell to filled racks
         ("photo", "p02.jpg", 3.5, "up"),      # "Bonita Style · Coming Soon" storefront, title on top
-        ("photo", "p07.jpg", 3.0, "right"),   # gold arch racks on marble
-        ("photo", "p09.jpg", 3.0, "left"),    # unwrapping the gold rails
-        ("photo", "p10.jpg", 3.0, "right"),   # racks going up (installer from behind)
+        ("photo", "p24.jpg", 3.0, "down"),    # the empty suite
+        ("photo", "p25.jpg", 3.0, "right"),   # walls being framed
+        ("photo", "p17.jpg", 3.0, "up"),      # choosing the marble tile
+        ("photo", "p07.jpg", 3.0, "right"),   # gold arch racks on the new marble floor
+        ("photo", "p10.jpg", 3.0, "left"),    # racks going up (installer from behind)
         ("photo", "p06.jpg", 3.0, "down"),    # the rack wall down the room
         ("video", RACKS, 0.0, 3.0),            # racks filled with thobes
-        ("video", RACKS, 2.8, 3.0),
     ]
     print(build(shots, r.S / "music/track1.mp3", "bonita_houston_store_tour.mp4"))
