@@ -63,3 +63,11 @@ After
 ## Re-test
 
 See the bottom of this file once the 20-buyer re-test (same seed) finishes.
+
+## Re-test result (same 20 simulated buyers, same seed 564480)
+
+- **Before (pitch-v1): 3 buy · 17 pass (15%).** **After (this offer): 4 buy · 16 pass (20%).**
+- Who flipped: P002 (53, "must try it on"). The fitting-room length check and free exchange answered what had burned her online.
+- **Timing dropped from 5 to 4 passes, and several timing/habit passers now say they'd join the Ramadan early-access list** instead of walking away. That list is the most valuable thing the offer adds: it turns November "not yet" into February sales.
+- What didn't move: **price** (5, deal hunters anchored on $20–30 online abayas), **habit** (4, loyal to a Hillcroft/Sugar Land seller or family abroad), **trust** (2, no Google reviews yet), **need** (1, South Asian shoppers who wear shalwar kameez, not thobes).
+- Read: the offer helps, but the store's bigger problems are **the calendar** (November is off-season) and **who the range is for**. Those are marketing and buying decisions, not offer tweaks. Language models lean agreeable, so treat 20% as an upper bound.

@@ -8,10 +8,10 @@
 - **Cash:** the build-out is about $37,400 (most already paid). With the guessed ramp, losses on top of that bring the cash needed to about **$77,000** before the store pays for itself. That doesn't include the ~$40,000 of opening stock, which comes back as it sells.
 
 **Three ways to improve the margin (each one run through the tool):**
-1. **Sell more per visit.** At about $95 per order instead of $85 (add a $10 hijab, or a bisht/shawl bundle), break-even drops from about 10 to **8 a day**, and year 1 improves by about $24,000 (to -$15,300).
+1. **Sell more per visit.** At about $95 per order instead of $85 (add a $10 hijab, or a bisht/shawl bundle; cost of goods kept at 46%), each order leaves $47.23. Break-even drops from about 10 to **9 a day** (8.3), and year 1 improves by about $12,500 (to -$27,100).
 2. **Match staffing to traffic.** Two paid people instead of three (the owner covers slow weekday hours) also brings break-even to **8 a day**, and year 1 improves by about $25,000 (to -$14,400).
 3. **Bring more people in.** 25% more orders than the guessed ramp roughly halves the loss (to about -$14,000). 50% more turns the store profitable (+$11,600).
-   Doing #1 and #2 together is the cheapest path to a store that pays for itself.
+   **#1 and #2 together:** break-even **7 a day**, year 1 about **-$1,900** (close to even) on the same cautious ramp. That's the cheapest path to a store that pays for itself.
 
 **Board's money conditions:**
 - Landed cost per piece: **not met**. The sheet says $40,000 / 500 pieces ≈ $80, but the online plan says about 46%, which would be about $36 on a $78 thobe. If $80 is right, the store loses money on every sale. **Confirm before opening day.**
