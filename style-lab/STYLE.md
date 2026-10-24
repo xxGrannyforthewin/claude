@@ -22,9 +22,9 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 ## Locked
 
 - **Cuts:** straight cuts only between shots, no dissolves (round 1).
-- **Hook lines:** "henna night outfit", "the perfect thobe doesn't exi—", "I almost didn't buy this dress" (round 1).
-- **Hook text, direction:** plain white TikTok Sans with a soft shadow, no box, like text typed in the app. Make it bolder and put it in the middle of the screen (round 1 note). Exact weight being chosen in round 2.
-- **Text motion, direction:** text just appears, no animation (round 1 keep). Smooth settle still being compared in round 2.
+- **Hook text:** TikTok Sans **Bold**, white, soft drop shadow, no box, about 66px on a 1080×1920 frame, centred horizontally and in the middle of the screen (block centred around y 930), lines balanced to two at most (rounds 1–2).
+- **Text motion:** text just appears, no animation (round 1 keep; settle option left unrated in round 2).
+- **Hook bank (8):** "henna night outfit", "the perfect thobe doesn't exi—", "I almost didn't buy this dress" (round 1); "what I wore to my cousin's henna", "everyone asked where my thobe was from", "I wasn't going to post this but—", "my Eid outfit is sorted", "found my henna night thobe" (round 2). Only post a line when it's true for that video.
 
 ## Rejected
 
@@ -38,7 +38,7 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 
 ## Open questions
 
-- Which weight for hook text (round 2: SemiBold, Bold, ExtraBold, Bold bigger).
-- Cream-and-berry box: keep as an occasional brand option or drop (round 2).
+- Bold vs ExtraBold on long two-line hooks (round 3).
+- Feature callout style (round 3): small white, white with ↑ arrow, or the cream-and-berry box (a maybe in rounds 1 and 2).
 - Warda of London reference videos: save to Drive so they can be studied frame by frame.
 - Music source for finished videos (in-app, or a licensed library later).
