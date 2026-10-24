@@ -11,11 +11,11 @@ Built round by round in Style Lab (4 rounds so far): https://claude.ai/artifact/
 - No faces. Frame from the neck or shoulders down, or shoot backs, hands and details.
 - Vertical 9:16, 1080×1920, for TikTok Shop, Facebook Reels/Stories ads, Instagram Reels and the Houston store.
 
-**Shape of a post** (round 4 mini video, kept)
-1. **Hook** on the first shot, about 2–3 seconds.
-2. **Straight cut** to a detail, with **one callout** that answers a buyer's question, about 2 seconds.
-3. **Straight cut** to the full look, **no text**, about 2–3 seconds.
-Longer videos repeat steps 2–3 with new details. No logo at the end.
+**Shape of a post** (round 4 mini video, kept; timing updated from user feedback on the first real videos: "the clips are too short")
+1. **Hook** on the first shot, **at least 3 seconds** on screen.
+2. **Straight cut** to a detail, with **one callout** that answers a buyer's question, **at least 3 seconds**.
+3. **Straight cut** to the full look, **no text**, **at least 3 seconds**.
+Every shot holds at least 3 seconds; a finished post runs about 12–15 seconds. Longer videos repeat steps 2–3 with new details. No logo at the end.
 
 **Hook text**
 - TikTok Sans **ExtraBold**, white, soft drop shadow, no box.
