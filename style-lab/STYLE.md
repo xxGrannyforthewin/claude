@@ -17,11 +17,13 @@ Built round by round in Style Lab (4 rounds so far): https://claude.ai/artifact/
 3. **Straight cut** to the full look, **no text**, **at least 3 seconds**.
 Every shot holds at least 3 seconds; a finished post runs about 12–15 seconds. Longer videos repeat steps 2–3 with new details. No logo at the end.
 
-**Hook text**
-- TikTok Sans **ExtraBold**, white, soft drop shadow, no box.
-- About 66px on a 1080×1920 frame, centred horizontally, in the middle of the screen (text block centred around y 930).
-- One or two lines, split evenly. Keep it inside Instagram's safe zone (x 91–990; y 237–997, and to y 1479 on the left of the button column).
+**Hook text** (updated to the user's reference: "The lace set every modest girl needs.")
+- TikTok Sans **Medium**, white, soft drop shadow, no box.
+- **Sentence case with a full stop**: capital first letter, ends in "." (or "—" for a cut-off line).
+- About 50px on a 1080×1920 frame, on **one line** (up to about 880px wide), centred horizontally, in the middle of the screen (y about 930). Write the hook short enough to fit one line.
+- Keep it inside Instagram's safe zone (x 91–990; y 237–997, and to y 1479 on the left of the button column).
 - Appears instantly, with no animation.
+- (Earlier rounds locked ExtraBold lowercase; replaced by this quieter look at the user's request.)
 
 **Feature callouts**
 - TikTok Sans **Bold**, about 42px, in a **highlight box**: **white box with black text** (default) or **black box with white text**. Box rounded, sits evenly around the words.
