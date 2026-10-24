@@ -1,0 +1,33 @@
+# Bonita Style — Video Style
+
+Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVnfSWa
+
+## The brief
+
+1. **What it's for:** Bonita Style (modest boutique) video for TikTok Shop, Facebook ads (Reels and Stories only), Instagram Reels, and the Houston store (8401 Westheimer, STE 130; store content comes last, from Store B-Roll / Store UGC clips).
+2. **Shape:** vertical 9:16 for everything.
+3. **Viewer and first second:** women aged 25–40, Arab and Muslim, often Palestinian, shopping for thobes and kaftans for henna nights, Eid, weddings and family gatherings. In the first second: the embroidery and fabric stop the scroll ("that's so beautiful, I need to see it closer") and the viewer feels "this is for me and my people", like a friend sent it.
+4. **References:**
+   - Warda of London (TikTok and Instagram): loved for *simplicity yet elegance*; shows what this age group likes. Videos not yet viewable here (TikTok and Instagram blocked downloads); user may save them to Drive.
+   - Bonita's own store-opening reel (@bonitastyleus, `refs/ref1` on branch `claude/style-lab-refs`): raw handheld behind-the-scenes footage, heavy condensed all-caps text for key info, bold lowercase serif for spoken captions.
+5. **Never:** cheap effects (glitches, flashy transitions, heavy zooms, emoji explosions), loud or cluttered text, text over the embroidery, neon or discount-ad looks, silly trend sounds, showing faces, anything that looks AI-generated, hard selling, ending on the logo.
+6. **What we already have:**
+   - Logo: hand-painted watercolor calligraphy wordmark in Arabic-inspired lettering, berry/wine (about `#a03450`, deepest `#770825`) with gold-leaf accents (about `#dcb683`); "MODEST BOUTIQUE" in wide-spaced gold capitals. File: `brand/bonita-logo.webp`.
+   - Fonts: TikTok Sans or Proxima Nova.
+   - Palette direction: berry, gold, soft white/cream.
+7. **Motion:** "show me" — test slow and graceful, smooth and confident, and gentle rhythm in round 1. Transitions minimal: these are real videos, mostly straight cuts.
+8. **Sound:** soft instrumental (piano, strings, oud) or Arabic-inspired (oud, qanun, soft percussion), calm and warm; or a trending sound added in the app with the edit kept clean. No sound effects. No sound library yet, so music is added at posting.
+9. **Build first:** hooks / title text. Hook voice is personal and occasion-led, e.g. "henna night outfit", "the perfect thobe doesn't exi...", "I almost didn't buy this dress", "here's what I wore to my ___". Feminine, soft, a gentle sell.
+
+## Locked
+
+(nothing yet)
+
+## Rejected
+
+(nothing yet)
+
+## Open questions
+
+- Warda of London reference videos: save to Drive so they can be studied frame by frame.
+- Music source for finished videos (in-app, or a licensed library later).
