@@ -33,7 +33,7 @@ Longer videos repeat steps 2–3 with new details. No logo at the end.
 - Straight cuts only. No dissolves, zooms, glitches or flashy transitions.
 
 **Sound**
-- No sound effects. Add music when posting: soft piano, strings or oud, Arabic-inspired (oud, qanun, soft percussion), or a calm trending sound. The edit stays clean underneath.
+- No sound effects. Soft instrumental music under every video: strings, qanun, oud or piano, calm and warm, steady volume, no drops or vocals. Either a track generated for the video (Google Lyria via Treg, about $0.04 per 30s, user-approved; prompts in `scripts/reel_v2.py` history) mixed about −2.5 dB with a 0.4s fade in and 1.2s fade out, or a calm sound added in the app when posting.
 
 **Hook bank** (only post a line when it's true for that video)
 - henna night outfit
