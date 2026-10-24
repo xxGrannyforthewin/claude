@@ -22,7 +22,8 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 ## Locked
 
 - **Cuts:** straight cuts only between shots, no dissolves (round 1).
-- **Hook text:** TikTok Sans **Bold**, white, soft drop shadow, no box, about 66px on a 1080×1920 frame, centred horizontally and in the middle of the screen (block centred around y 930), lines balanced to two at most (rounds 1–2).
+- **Hook text:** TikTok Sans **ExtraBold** (Bold was kept in round 2; ExtraBold won on a two-line hook in round 3), white, soft drop shadow, no box, about 66px on a 1080×1920 frame, centred horizontally and in the middle of the screen (block centred around y 930), lines balanced to two at most.
+- **Feature callouts:** small TikTok Sans Bold (about 46px) in white with a soft shadow, placed by the detail it names (round 3). No arrows. Wording must be true for the piece.
 - **Text motion:** text just appears, no animation (round 1 keep; settle option left unrated in round 2).
 - **Hook bank (8):** "henna night outfit", "the perfect thobe doesn't exi—", "I almost didn't buy this dress" (round 1); "what I wore to my cousin's henna", "everyone asked where my thobe was from", "I wasn't going to post this but—", "my Eid outfit is sorted", "found my henna night thobe" (round 2). Only post a line when it's true for that video.
 
@@ -31,6 +32,9 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 - White bubble behind text (round 1, dropped).
 - Proxima Nova for hooks (round 1, dropped).
 - Gold accent word in the hook (round 1, dropped).
+- Arrow (↑) in callouts (round 3, dropped).
+
+Note: the white bubble was dropped for hooks in round 1, but in round 3 the user asked to try a white highlight with black text for callouts, so it's back as a callout option only.
 
 ## Patterns in the notes
 
@@ -38,7 +42,7 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 
 ## Open questions
 
-- Bold vs ExtraBold on long two-line hooks (round 3).
-- Feature callout style (round 3): small white, white with ↑ arrow, or the cream-and-berry box (a maybe in rounds 1 and 2).
+- Callout highlight colours (round 4): white/black, black/white, cream/berry, berry/cream, blush/berry. Boxes now centred on the ink of the words (round 3 note: "highlight is off center").
+- Full flow of a post (round 4 mini video): hook → callout → full look with no text.
 - Warda of London reference videos: save to Drive so they can be studied frame by frame.
 - Music source for finished videos (in-app, or a licensed library later).

@@ -71,8 +71,10 @@ def layer(text, look, path, words_upto=None):
         top = look["cy"] - len(lines) * lh / 2 if "cy" in look else TEXT_Y
         x0, y0 = cx - lw / 2, top + i * lh
         if look.get("box"):
-            px, py = int(font.size * .42), int(font.size * .2)
-            bd.rounded_rectangle([x0 - px, y0 - py + asc * .3, x0 + lw + px, y0 + lh - py * .4], radius=int(font.size * .28), fill=look["box"])
+            # Box around the ink of the line itself, so the highlight is centred on the letters.
+            px, py = int(font.size * .45), int(font.size * .32)
+            l, t, rr, bt = d.textbbox((x0, y0), line, font=font)
+            bd.rounded_rectangle([l - px, t - py, rr + px, bt + py], radius=int(font.size * .3), fill=look["box"])
         x = x0
         for w in line.split():
             count += 1
