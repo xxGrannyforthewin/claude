@@ -60,7 +60,8 @@ def build(shots, track, out_name, music_start=0.0):
         inputs += a; fc += f; total += s[2] if s[0] == "photo" else s[3]
     n = len(shots)
     tl = OUT / "title.png"; title_layer(tl)
-    inputs += ["-loop", "1", "-t", str(shots[0][2]), "-i", str(tl)]
+    d0 = shots[0][2] if shots[0][0] == "photo" else shots[0][3]
+    inputs += ["-loop", "1", "-t", str(d0), "-i", str(tl)]
     fc += f"[{n}:v]format=rgba[t];[v0][t]overlay=0:0,format=yuv420p[s0];"
     fc += "".join(f"[{'s0' if i == 0 else f'v{i}'}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v];"
     total = round(total, 2)
@@ -74,15 +75,17 @@ def build(shots, track, out_name, music_start=0.0):
 
 
 if __name__ == "__main__":
-    RACKS = r.clip(3)  # 2026-10-17 store video: racks of thobes on the gold rails
-    shots = [  # face-free; storefront first like the reference, then the build-out from empty shell to filled racks
-        ("photo", "p02.jpg", 3.5, "up"),      # "Bonita Style · Coming Soon" storefront, title on top
-        ("photo", "p24.jpg", 3.0, "down"),    # the empty suite
-        ("photo", "p25.jpg", 3.0, "right"),   # walls being framed
-        ("photo", "p17.jpg", 3.0, "up"),      # choosing the marble tile
-        ("photo", "p07.jpg", 3.0, "right"),   # gold arch racks on the new marble floor
-        ("photo", "p10.jpg", 3.0, "left"),    # racks going up (installer from behind)
-        ("photo", "p06.jpg", 3.0, "down"),    # the rack wall down the room
-        ("video", RACKS, 0.0, 3.0),            # racks filled with thobes
+    V = r.S / "store_vids"
+    WINDOW = V / "2596c5bd-WhatsApp_Video_2026-10-16_at_15.45.55.mp4"  # window mannequins, chandeliers
+    GOLD = V / "14ba9571-WhatsApp_Video_2026-10-17_at_11.52.05.mp4"    # gold coin jewelry
+    RACKS = V / "d468b967-WhatsApp_Video_2026-10-17_at_11.51.58.mp4"   # racks of thobes
+    shots = [  # all real store video, face-free; window first like the reference's storefront
+        ("video", WINDOW, 0.0, 3.5),   # title on top
+        ("video", WINDOW, 9.6, 3.0),
+        ("video", GOLD, 2.4, 3.0),
+        ("video", GOLD, 8.2, 3.0),
+        ("video", RACKS, 1.2, 3.0),
+        ("video", RACKS, 2.8, 3.0),
+        ("video", WINDOW, 16.8, 3.0),
     ]
     print(build(shots, r.S / "music/track1.mp3", "bonita_houston_store_tour.mp4"))
