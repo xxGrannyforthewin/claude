@@ -21,13 +21,24 @@ Built round by round in Style Lab: https://claude.ai/artifact/H89TDcBDGMkPaVzrVn
 
 ## Locked
 
-(nothing yet)
+- **Cuts:** straight cuts only between shots, no dissolves (round 1).
+- **Hook lines:** "henna night outfit", "the perfect thobe doesn't exi—", "I almost didn't buy this dress" (round 1).
+- **Hook text, direction:** plain white TikTok Sans with a soft shadow, no box, like text typed in the app. Make it bolder and put it in the middle of the screen (round 1 note). Exact weight being chosen in round 2.
+- **Text motion, direction:** text just appears, no animation (round 1 keep). Smooth settle still being compared in round 2.
 
 ## Rejected
 
-(nothing yet)
+- White bubble behind text (round 1, dropped).
+- Proxima Nova for hooks (round 1, dropped).
+- Gold accent word in the hook (round 1, dropped).
+
+## Patterns in the notes
+
+- Every pick was the most native, least edited option: plain text, no animation, straight cuts. Keep pushing toward "real phone edit", away from "designed".
 
 ## Open questions
 
+- Which weight for hook text (round 2: SemiBold, Bold, ExtraBold, Bold bigger).
+- Cream-and-berry box: keep as an occasional brand option or drop (round 2).
 - Warda of London reference videos: save to Drive so they can be studied frame by frame.
 - Music source for finished videos (in-app, or a licensed library later).

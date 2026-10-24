@@ -15,6 +15,8 @@ FONT = {
     "tt_reg": F / "TikTokSans12pt-Regular.otf",
     "tt_med": F / "TikTokSans12pt-Medium.otf",
     "tt_semi": F / "TikTokSans12pt-SemiBold.otf",
+    "tt_bold": F / "TikTokSans12pt-Bold.otf",
+    "tt_xbold": F / "TikTokSans12pt-ExtraBold.otf",
     "proxima": F / "Proxima Nova Regular.ttf",
 }
 BERRY, GOLD, CREAM = (160, 52, 80), (220, 182, 131), (250, 244, 236)
@@ -65,7 +67,9 @@ def layer(text, look, path, words_upto=None):
     count = 0
     for i, line in enumerate(lines):
         lw = d.textlength(line, font=font)
-        x0, y0 = TEXT_X - lw / 2, TEXT_Y + i * lh
+        cx = look.get("cx", TEXT_X)
+        top = look["cy"] - len(lines) * lh / 2 if "cy" in look else TEXT_Y
+        x0, y0 = cx - lw / 2, top + i * lh
         if look.get("box"):
             px, py = int(font.size * .42), int(font.size * .2)
             bd.rounded_rectangle([x0 - px, y0 - py + asc * .3, x0 + lw + px, y0 + lh - py * .4], radius=int(font.size * .28), fill=look["box"])
